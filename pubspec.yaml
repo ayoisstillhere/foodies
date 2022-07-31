@@ -67,6 +67,9 @@ flutter:
   assets:
     - assets/images/Logo_Icon.png
     - assets/images/Logo_Name.png
+    - assets/images/onboarding1.jpg
+    - assets/images/onboarding2.jpg
+    - assets/images/onboarding3.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

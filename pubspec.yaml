@@ -39,10 +39,15 @@ dependencies:
   intl: ^0.17.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.3
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.3
+  flutter_native_splash: ^2.2.6
+
+flutter_native_splash:
+  color: "191919"
+  image: assets/images/Logo_Name.png
 
 flutter_icons:
   android: true

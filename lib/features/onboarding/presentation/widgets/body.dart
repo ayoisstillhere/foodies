@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
+
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -14,14 +16,8 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: getProportionateScreenHeight(489),
-          width: double.infinity,
-          child: Image.asset(
-            "assets/images/onboarding1.jpg",
-            fit: BoxFit.cover,
-          ),
-        ),
+        onboardingImage(),
+        const Spacer(),
         Text(
           "Join as a Partner",
           style: TextStyle(
@@ -30,6 +26,7 @@ class _BodyState extends State<Body> {
             fontSize: getProportionateScreenWidth(32),
           ),
         ),
+        const Spacer(),
         SizedBox(
           width: getProportionateScreenWidth(247),
           child: Text(
@@ -41,6 +38,7 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
+        const Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -51,13 +49,29 @@ class _BodyState extends State<Body> {
             dot(),
           ],
         ),
+        const Spacer(),
         DefaultButton(
           color: kSecondaryColor,
           text: 'Create Account',
           press: () {},
         ),
-        DefaultButton(text: 'Login', press: () {}, color: Colors.white)
+        const Spacer(),
+        DefaultButton(text: 'Login', press: () {}, color: Colors.white),
+        const Spacer(
+          flex: 3,
+        ),
       ],
+    );
+  }
+
+  SizedBox onboardingImage() {
+    return SizedBox(
+      height: getProportionateScreenHeight(489),
+      width: double.infinity,
+      child: Image.asset(
+        "assets/images/onboarding1.jpg",
+        fit: BoxFit.cover,
+      ),
     );
   }
 
@@ -68,53 +82,6 @@ class _BodyState extends State<Body> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         color: kPrimaryColor,
-      ),
-    );
-  }
-}
-
-class DefaultButton extends StatelessWidget {
-  const DefaultButton({
-    Key? key,
-    required this.text,
-    required this.press,
-    required this.color,
-  }) : super(key: key);
-  final String text;
-  final void Function() press;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 31.0),
-      child: SizedBox(
-        width: double.infinity,
-        height: getProportionateScreenHeight(56),
-        child: TextButton(
-          onPressed: press,
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(color),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-                side: color == Colors.white
-                    ? const BorderSide(
-                        color: kTextGreyColor,
-                      )
-                    : BorderSide.none,
-              ),
-            ),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: getProportionateScreenWidth(16),
-              color: color == Colors.white ? kPrimaryColor : Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
       ),
     );
   }

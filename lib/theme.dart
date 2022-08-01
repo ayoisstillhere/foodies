@@ -15,7 +15,7 @@ ThemeData theme() {
 }
 
 AppBarTheme appBarTheme() {
-  return AppBarTheme(
+  return const AppBarTheme(
     centerTitle: true,
     color: Colors.white,
     elevation: 0,
@@ -23,7 +23,7 @@ AppBarTheme appBarTheme() {
     iconTheme: const IconThemeData(color: kTextGreyColor),
     titleTextStyle: TextStyle(
       color: kTextGreyColor,
-      fontSize: getProportionateScreenWidth(18),
+      fontSize: 18,
     ),
   );
 }

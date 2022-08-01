@@ -5,18 +5,18 @@ import '../../../../size_config.dart';
 
 class OnboardingContent extends StatelessWidget {
   const OnboardingContent(
-      {Key? key, required this.image, required this.header, required this.text})
+      {Key? key, this.image, this.header, this.text})
       : super(key: key);
-  final String image, header, text;
+  final String? image, header, text;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        onboardingImage(image),
+        onboardingImage(image!),
         const Spacer(flex: 2),
         Text(
-          header,
+          header!,
           style: TextStyle(
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class OnboardingContent extends StatelessWidget {
         SizedBox(
           width: getProportionateScreenWidth(247),
           child: Text(
-            text,
+            text!,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: kTextGreyColor,

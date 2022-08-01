@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../login/presentation/pages/login_screen.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
@@ -75,7 +76,9 @@ class _BodyState extends State<Body> {
               const Spacer(),
               DefaultButton(
                 text: 'Login',
-                press: () {},
+                press: () {
+                  Navigator.pushNamed(context, LoginScreen.routeName);
+                },
                 color: Colors.white,
               ),
               const Spacer(flex: 5),

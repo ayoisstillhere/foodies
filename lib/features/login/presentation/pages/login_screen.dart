@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/features/login/presentation/widgets/body.dart';
 
 class LoginScreen extends StatelessWidget {
   static String routeName = "/login";
@@ -6,6 +7,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
+      body: Body(),
+    );
   }
 }

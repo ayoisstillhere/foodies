@@ -16,49 +16,65 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        onboardingImage(),
-        const Spacer(),
-        Text(
-          "Join as a Partner",
-          style: TextStyle(
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
-            fontSize: getProportionateScreenWidth(32),
+        Expanded(
+          flex: 5,
+          child: Column(
+            children: [
+              onboardingImage(),
+              const Spacer(flex: 2),
+              Text(
+                "Join as a Partner",
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: getProportionateScreenWidth(32),
+                ),
+              ),
+              const Spacer(),
+              SizedBox(
+                width: getProportionateScreenWidth(247),
+                child: Text(
+                  "Help your floormates get food while on your way to CAFE.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: kTextGreyColor,
+                    fontSize: getProportionateScreenWidth(14),
+                  ),
+                ),
+              ),
+              const Spacer(flex: 2),
+            ],
           ),
         ),
-        const Spacer(),
-        SizedBox(
-          width: getProportionateScreenWidth(247),
-          child: Text(
-            "Help your floormates get food while on your way to CAFE.",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: kTextGreyColor,
-              fontSize: getProportionateScreenWidth(14),
-            ),
+        Expanded(
+          flex: 2,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  dot(),
+                  SizedBox(width: getProportionateScreenWidth(20)),
+                  dot(),
+                  SizedBox(width: getProportionateScreenWidth(20)),
+                  dot(),
+                ],
+              ),
+              const Spacer(flex: 2),
+              DefaultButton(
+                color: kSecondaryColor,
+                text: 'Create Account',
+                press: () {},
+              ),
+              const Spacer(),
+              DefaultButton(
+                text: 'Login',
+                press: () {},
+                color: Colors.white,
+              ),
+              const Spacer(flex: 5),
+            ],
           ),
-        ),
-        const Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            dot(),
-            SizedBox(width: getProportionateScreenWidth(20)),
-            dot(),
-            SizedBox(width: getProportionateScreenWidth(20)),
-            dot(),
-          ],
-        ),
-        const Spacer(),
-        DefaultButton(
-          color: kSecondaryColor,
-          text: 'Create Account',
-          press: () {},
-        ),
-        const Spacer(),
-        DefaultButton(text: 'Login', press: () {}, color: Colors.white),
-        const Spacer(
-          flex: 3,
         ),
       ],
     );

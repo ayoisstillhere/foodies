@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/features/onboarding/presentation/pages/onboarding_screen.dart';
-import 'package:foodies/routes.dart';
+import 'features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'routes.dart';
 
 import 'theme.dart';
 

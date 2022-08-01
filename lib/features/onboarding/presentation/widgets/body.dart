@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/features/onboarding/presentation/widgets/onboarding_content.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
@@ -16,34 +17,12 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        const Expanded(
           flex: 5,
-          child: Column(
-            children: [
-              onboardingImage(),
-              const Spacer(flex: 2),
-              Text(
-                "Join as a Partner",
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: getProportionateScreenWidth(32),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: getProportionateScreenWidth(247),
-                child: Text(
-                  "Help your floormates get food while on your way to CAFE.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: kTextGreyColor,
-                    fontSize: getProportionateScreenWidth(14),
-                  ),
-                ),
-              ),
-              const Spacer(flex: 2),
-            ],
+          child: OnboardingContent(
+            image: "assets/images/onboarding1.jpg",
+            header: "Join as a Partner",
+            text: "Help your floormates get food while on your way to CAFE.",
           ),
         ),
         Expanded(
@@ -77,17 +56,6 @@ class _BodyState extends State<Body> {
           ),
         ),
       ],
-    );
-  }
-
-  SizedBox onboardingImage() {
-    return SizedBox(
-      height: getProportionateScreenHeight(489),
-      width: double.infinity,
-      child: Image.asset(
-        "assets/images/onboarding1.jpg",
-        fit: BoxFit.cover,
-      ),
     );
   }
 

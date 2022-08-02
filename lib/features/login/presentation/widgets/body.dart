@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/components/default_button.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
+
+import '../../../../components/custom_suffix_icon.dart';
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -30,10 +32,13 @@ class Body extends StatelessWidget {
                   height: getProportionateScreenHeight(50),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: "Email",
                       hintText: "Enter your email",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
+                      suffixIcon: CustomSuffixIcon(
+                        svgIcon: 'assets/icons/email_icon.svg',
+                      ),
                     ),
                   ),
                 ),

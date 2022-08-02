@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';
+import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
@@ -98,45 +99,6 @@ class Body extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class FormHeader extends StatelessWidget {
-  const FormHeader({
-    Key? key,
-    required this.title,
-    required this.subTitle,
-  }) : super(key: key);
-  final String title, subTitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: kPrimaryColor,
-            fontSize: getProportionateScreenWidth(24),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(
-          height: getProportionateScreenHeight(17),
-        ),
-        SizedBox(
-          width: getProportionateScreenWidth(180),
-          child: Text(
-            subTitle,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: getProportionateScreenWidth(14),
-              color: kTextGreyColor,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

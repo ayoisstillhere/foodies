@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
+import 'constants.dart';
+import 'size_config.dart';
 
 ThemeData theme() {
   return ThemeData(

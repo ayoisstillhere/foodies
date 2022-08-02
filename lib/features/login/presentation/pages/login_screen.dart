@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/features/login/presentation/widgets/body.dart';
+import '../widgets/body.dart';
 
 class LoginScreen extends StatelessWidget {
   static String routeName = "/login";

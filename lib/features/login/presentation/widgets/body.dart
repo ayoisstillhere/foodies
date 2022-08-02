@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/features/signup/presentation/pages/signup_screen.dart';
+import '../../../signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';

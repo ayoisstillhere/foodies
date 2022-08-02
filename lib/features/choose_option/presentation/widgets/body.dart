@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodies/components/default_button.dart';
-import 'package:foodies/components/form_header.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
+import '../../../../components/default_button.dart';
+import '../../../../components/form_header.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 import 'option_card.dart';
 

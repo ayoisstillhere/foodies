@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/components/default_button.dart';
-import 'package:foodies/features/choose_option/presentation/pages/choose_option_screen.dart';
+import '../../../../components/default_button.dart';
+import '../../../choose_option/presentation/pages/choose_option_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/form_header.dart';

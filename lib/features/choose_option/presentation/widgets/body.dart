@@ -7,9 +7,16 @@ import '../../../../size_config.dart';
 
 import 'option_card.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  bool partnerSelected = false;
+  bool clientSelected = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,18 +33,36 @@ class Body extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(31)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              OptionCard(
-                option: 'Partner',
-                img: 'assets/images/choose_option_partner.svg',
-                description: 'Help your floormates get food!',
-                positions: [34, 46, 119, 34, 148, 15, 117],
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    partnerSelected = true;
+                    clientSelected = false;
+                  });
+                },
+                child: OptionCard(
+                  option: 'Partner',
+                  img: 'assets/images/choose_option_partner.svg',
+                  description: 'Help your floormates get food!',
+                  positions: [34, 46, 119, 34, 148, 15, 117],
+                  isSelected: partnerSelected,
+                ),
               ),
-              OptionCard(
-                img: 'assets/images/choose_option_client.svg',
-                option: 'Client',
-                description: 'Post orders for floormates to help!',
-                positions: [50, 35, 119, 43, 148, 5, 135],
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    clientSelected = true;
+                    partnerSelected = false;
+                  });
+                },
+                child: OptionCard(
+                  img: 'assets/images/choose_option_client.svg',
+                  option: 'Client',
+                  description: 'Post orders for floormates to help!',
+                  positions: [50, 35, 119, 43, 148, 5, 135],
+                  isSelected: clientSelected,
+                ),
               ),
             ],
           ),

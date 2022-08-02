@@ -4,19 +4,26 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
-class OptionCard extends StatelessWidget {
+class OptionCard extends StatefulWidget {
   const OptionCard({
     Key? key,
     required this.img,
     required this.option,
     required this.description,
     required this.positions,
+    required this.isSelected,
   }) : super(key: key);
   final String img;
   final String option;
   final String description;
   final List<double> positions;
+  final bool isSelected;
 
+  @override
+  State<OptionCard> createState() => _OptionCardState();
+}
+
+class _OptionCardState extends State<OptionCard> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,9 +31,9 @@ class OptionCard extends StatelessWidget {
         Container(
           height: getProportionateScreenHeight(209),
           width: getProportionateScreenWidth(145),
-          decoration: const BoxDecoration(
-            color: kObjectGreyColor,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+          decoration: BoxDecoration(
+            color: widget.isSelected ? kSecondaryColor : kObjectGreyColor,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
         ),
         Positioned(
@@ -38,15 +45,15 @@ class OptionCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: getProportionateScreenWidth(positions[0]),
-          left: getProportionateScreenHeight(positions[1]),
-          child: SvgPicture.asset(img),
+          top: getProportionateScreenWidth(widget.positions[0]),
+          left: getProportionateScreenHeight(widget.positions[1]),
+          child: SvgPicture.asset(widget.img),
         ),
         Positioned(
-          top: getProportionateScreenHeight(positions[2]),
-          left: getProportionateScreenWidth(positions[3]),
+          top: getProportionateScreenHeight(widget.positions[2]),
+          left: getProportionateScreenWidth(widget.positions[3]),
           child: Text(
-            option,
+            widget.option,
             style: TextStyle(
               color: kPrimaryColor,
               fontWeight: FontWeight.bold,
@@ -55,12 +62,12 @@ class OptionCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: getProportionateScreenHeight(positions[4]),
-          left: getProportionateScreenWidth(positions[5]),
+          top: getProportionateScreenHeight(widget.positions[4]),
+          left: getProportionateScreenWidth(widget.positions[5]),
           child: SizedBox(
-            width: getProportionateScreenWidth(positions[6]),
+            width: getProportionateScreenWidth(widget.positions[6]),
             child: Text(
-              description,
+              widget.description,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: kPrimaryColor,

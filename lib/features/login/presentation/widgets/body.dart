@@ -32,12 +32,31 @@ class Body extends StatelessWidget {
                   height: getProportionateScreenHeight(50),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Email",
                       hintText: "Enter your email",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       suffixIcon: CustomSuffixIcon(
                         svgIcon: 'assets/icons/email_icon.svg',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(31.0),
+                ),
+                child: SizedBox(
+                  height: getProportionateScreenHeight(50),
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      labelText: "Password",
+                      hintText: "Enter your password",
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      suffixIcon: CustomSuffixIcon(
+                        svgIcon: 'assets/icons/password_icon.svg',
                       ),
                     ),
                   ),

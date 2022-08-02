@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/features/signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';
@@ -29,14 +30,16 @@ class Body extends StatelessWidget {
             color: kSecondaryColor,
           ),
           const Spacer(),
-          buildSignUpText(),
+          buildSignUpText(() {
+            Navigator.pushNamed(context, SignupScreen.routeName);
+          }),
           const Spacer(flex: 5),
         ],
       ),
     );
   }
 
-  Row buildSignUpText() {
+  Row buildSignUpText(void Function() press) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -47,11 +50,14 @@ class Body extends StatelessWidget {
             fontSize: getProportionateScreenWidth(16),
           ),
         ),
-        Text(
-          "Sign Up",
-          style: TextStyle(
-            color: kSecondaryColor,
-            fontSize: getProportionateScreenWidth(16),
+        GestureDetector(
+          onTap: press,
+          child: Text(
+            "Sign Up",
+            style: TextStyle(
+              color: kSecondaryColor,
+              fontSize: getProportionateScreenWidth(16),
+            ),
           ),
         ),
       ],

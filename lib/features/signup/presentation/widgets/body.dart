@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
+import 'package:foodies/features/complete_details/presentation/pages/complete_details_screen.dart';
 import 'package:foodies/features/login/presentation/pages/login_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
@@ -32,7 +33,9 @@ class Body extends StatelessWidget {
           const Spacer(),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, CompleteDetailsScreen.routeName);
+            },
             color: kSecondaryColor,
           ),
           const Spacer(),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -28,7 +27,7 @@ class FormHeader extends StatelessWidget {
           height: getProportionateScreenHeight(17),
         ),
         SizedBox(
-          width: getProportionateScreenWidth(180),
+          width: getProportionateScreenWidth(216),
           child: Text(
             subTitle,
             textAlign: TextAlign.center,

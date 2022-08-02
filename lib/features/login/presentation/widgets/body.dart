@@ -10,63 +10,94 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Center(
+      child: Column(
+        children: [
+          const FormHeader(
+            title: 'Welcome Back',
+            subTitle: 'Sign In with your email and password',
+          ),
+          const Spacer(flex: 2),
+          buildEmailFormField(),
+          const Spacer(),
+          buildPasswordFormField(),
+          const Spacer(flex: 2),
+          DefaultButton(
+            text: "Login",
+            press: () {},
+            color: kSecondaryColor,
+          ),
+          const Spacer(),
+          buildSignUpText(),
+          const Spacer(flex: 5),
+        ],
+      ),
+    );
+  }
+
+  Row buildSignUpText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
-          child: Column(
-            children: [
-              Text(
-                "Welcome Back",
-                style: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: getProportionateScreenWidth(24),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              FormHeader(),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(31.0),
-                ),
-                child: SizedBox(
-                  height: getProportionateScreenHeight(50),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: "Email",
-                      hintText: "Enter your email",
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      suffixIcon: CustomSuffixIcon(
-                        svgIcon: 'assets/icons/email_icon.svg',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(31.0),
-                ),
-                child: SizedBox(
-                  height: getProportionateScreenHeight(50),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: "Password",
-                      hintText: "Enter your password",
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      suffixIcon: CustomSuffixIcon(
-                        svgIcon: 'assets/icons/password_icon.svg',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              DefaultButton(text: "Login", press: () {}, color: kSecondaryColor)
-            ],
+        Text(
+          "Don't have an account? ",
+          style: TextStyle(
+            color: kTextGreyColor,
+            fontSize: getProportionateScreenWidth(16),
+          ),
+        ),
+        Text(
+          "Sign Up",
+          style: TextStyle(
+            color: kSecondaryColor,
+            fontSize: getProportionateScreenWidth(16),
           ),
         ),
       ],
+    );
+  }
+
+  Padding buildPasswordFormField() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(31.0),
+      ),
+      child: SizedBox(
+        height: getProportionateScreenHeight(50),
+        child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: const InputDecoration(
+            labelText: "Password",
+            hintText: "Enter your password",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            suffixIcon: CustomSuffixIcon(
+              svgIcon: 'assets/icons/password_icon.svg',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding buildEmailFormField() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(31.0),
+      ),
+      child: SizedBox(
+        height: getProportionateScreenHeight(50),
+        child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: const InputDecoration(
+            labelText: "Email",
+            hintText: "Enter your email",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            suffixIcon: CustomSuffixIcon(
+              svgIcon: 'assets/icons/email_icon.svg',
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -74,20 +105,38 @@ class Body extends StatelessWidget {
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key,
+    required this.title,
+    required this.subTitle,
   }) : super(key: key);
+  final String title, subTitle;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: getProportionateScreenWidth(180),
-      child: Text(
-        "Sign In with your email and password",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 14,
-          color: kTextGreyColor,
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            color: kPrimaryColor,
+            fontSize: getProportionateScreenWidth(24),
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
+        SizedBox(
+          height: getProportionateScreenHeight(17),
+        ),
+        SizedBox(
+          width: getProportionateScreenWidth(180),
+          child: Text(
+            subTitle,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(14),
+              color: kTextGreyColor,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

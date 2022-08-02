@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
+import 'package:foodies/components/default_button.dart';
 
+import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/form_header.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -60,24 +62,59 @@ class _BodyState extends State<Body> {
             subTitle: "Enter your room details so we can get you some chow!",
           ),
         ),
+        const Spacer(),
         sectionTitle("Hall"),
         buildHallRadios(),
+        const Spacer(),
         sectionTitle("Floor"),
         buildFloorRadios(),
+        const Spacer(),
         sectionTitle("Wing"),
         buildWingRadios(),
+        const Spacer(),
         sectionTitle("Room No."),
+        const Spacer(),
+        buildRoomNoField(),
+        const Spacer(
+          flex: 4,
+        ),
+        DefaultButton(text: "Sign Up", press: () {}, color: kSecondaryColor),
+        const Spacer(flex: 4),
       ],
     );
   }
 
-  Text sectionTitle(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: kPrimaryColor,
-        fontWeight: FontWeight.bold,
-        fontSize: getProportionateScreenWidth(20),
+  Padding buildRoomNoField() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(31.0),
+      ),
+      child: SizedBox(
+        height: getProportionateScreenHeight(50),
+        child: TextFormField(
+          decoration: const InputDecoration(
+            labelText: "Room Number",
+            hintText: "E.g H304",
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            suffixIcon: CustomSuffixIcon(
+              svgIcon: 'assets/icons/number_icon.svg',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget sectionTitle(String title) {
+    return Padding(
+      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: kPrimaryColor,
+          fontWeight: FontWeight.bold,
+          fontSize: getProportionateScreenWidth(20),
+        ),
       ),
     );
   }

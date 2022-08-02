@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/features/signup/presentation/pages/signup_screen.dart';
 import '../../../login/presentation/pages/login_screen.dart';
 
 import '../../../../components/default_button.dart';
@@ -71,7 +72,9 @@ class _BodyState extends State<Body> {
               DefaultButton(
                 color: kSecondaryColor,
                 text: 'Create Account',
-                press: () {},
+                press: () {
+                  Navigator.pushNamed(context, SignupScreen.routeName);
+                },
               ),
               const Spacer(),
               DefaultButton(

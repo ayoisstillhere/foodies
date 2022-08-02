@@ -72,7 +72,7 @@ class Body extends StatelessWidget {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
-          keyboardType: TextInputType.emailAddress,
+          obscureText: true,
           decoration: const InputDecoration(
             labelText: "Password",
             hintText: "Enter your password",

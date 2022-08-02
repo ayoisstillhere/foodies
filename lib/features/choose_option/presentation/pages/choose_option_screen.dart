@@ -6,6 +6,10 @@ class ChooseOptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Choose an Option"),
+      ),
+    );
   }
 }

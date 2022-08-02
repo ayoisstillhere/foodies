@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/components/default_button.dart';
+import 'package:foodies/features/choose_option/presentation/pages/choose_option_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/form_header.dart';
@@ -78,7 +79,13 @@ class _BodyState extends State<Body> {
         const Spacer(
           flex: 4,
         ),
-        DefaultButton(text: "Sign Up", press: () {}, color: kSecondaryColor),
+        DefaultButton(
+          text: "Sign Up",
+          press: () {
+            Navigator.pushNamed(context, ChooseOptionScreen.routeName);
+          },
+          color: kSecondaryColor,
+        ),
         const Spacer(flex: 4),
       ],
     );

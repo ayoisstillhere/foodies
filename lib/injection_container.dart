@@ -1,3 +1,4 @@
+import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 import 'package:foodies/features/signup/data/datasources/firebase_remote_datasource.dart';
 import 'package:foodies/features/signup/data/repositories/firebase_repository_impl.dart';
 import 'package:foodies/features/signup/domain/repositories/firebase_repository.dart';
@@ -13,8 +14,12 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //Features bloc,
-  sl.registerFactory(() =>
+  sl.registerFactory<AuthCubit>(() =>
       AuthCubit(isLoginUseCase: sl.call(), getCurrentUidUseCase: sl.call()));
+  sl.registerFactory<LoginCubit>(() => LoginCubit(
+      signupUseCase: sl.call(),
+      loginUseCase: sl.call(),
+      createCurrentUserUsecase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsLoginUseCase>(

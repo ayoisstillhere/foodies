@@ -1,8 +1,40 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import 'package:foodies/features/signup/domain/usecases/get_current_uid_usecase.dart';
+import 'package:foodies/features/signup/domain/usecases/is_login_usecase.dart';
+
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  final IsLoginUseCase isLoginUseCase;
+  final GetCurrentUidUseCase getCurrentUidUseCase;
+  AuthCubit(
+    this.isLoginUseCase,
+    this.getCurrentUidUseCase,
+  ) : super(AuthInitial());
+
+  Future<void> AppStarted() async {
+    try {
+      final isLogin = await isLoginUseCase.call();
+      if (isLogin) {
+        final currentUid = await getCurrentUidUseCase.call();
+
+        emit(Authenticated(uid: currentUid));
+      } else {
+        emit(UnAuthenticated());
+      }
+    } catch (_) {
+      emit(UnAuthenticated());
+    }
+  }
+
+  Future<void> loggedIn() async {
+    final currentUid = await getCurrentUidUseCase.call();
+    emit(Authenticated(uid: currentUid));
+  }
+
+  Future<void> loggedOut() async {
+    emit(UnAuthenticated());
+  }
 }

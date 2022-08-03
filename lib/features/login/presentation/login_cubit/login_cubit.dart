@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     emit(LoginLoading());
     try {
-      loginUseCase.call(email, password);
+      await loginUseCase.call(email, password);
       emit(LoginSuccess());
     } on SocketException catch (e) {
       emit(LoginFailure(e.message));
@@ -37,10 +37,18 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> submitRegisteration({
     required String email,
     required String password,
+    required String firstName,
+    required String lastName,
+    required String userClass,
+    required String hall,
+    required String floor,
+    required String wing,
+    required String roomNo,
   }) async {
     emit(LoginLoading());
     try {
-      signupUseCase.call(email, password);
+      await signupUseCase.call(email, password);
+      await createCurrentUserUsecase.call(email, firstName, lastName, userClass, hall, floor, wing, roomNo);
       emit(LoginSuccess());
     } on SocketException catch (e) {
       emit(LoginFailure(e.message));

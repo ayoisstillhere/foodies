@@ -31,15 +31,15 @@ class UserModel extends UserEntity {
 
   factory UserModel.fromSnapshot(DocumentSnapshot documentSnapshot) {
     return UserModel(
-      email: documentSnapshot['email'],
-      firstName: documentSnapshot['firstName'],
-      lastName: documentSnapshot['lastName'],
-      uid: documentSnapshot['uid'],
-      userClass: documentSnapshot['userClass'],
-      hall: documentSnapshot['hall'],
-      floor: documentSnapshot['floor'],
-      wing: documentSnapshot['wing'],
-      roomNo: documentSnapshot['roomNo'],
+      email: (documentSnapshot.data()! as dynamic)['email'],
+      firstName: (documentSnapshot.data()! as dynamic)['firstName'],
+      lastName: (documentSnapshot.data()! as dynamic)['lastName'],
+      uid: (documentSnapshot.data()! as dynamic)['uid'],
+      userClass: (documentSnapshot.data()! as dynamic)['userClass'],
+      hall: (documentSnapshot.data()! as dynamic)['hall'],
+      floor: (documentSnapshot.data()! as dynamic)['floor'],
+      wing: (documentSnapshot.data()! as dynamic)['wing'],
+      roomNo: (documentSnapshot.data()! as dynamic)['roomNo'],
     );
   }
 

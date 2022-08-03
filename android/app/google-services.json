@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "797801329798",
+    "project_id": "foodies-b3c88",
+    "storage_bucket": "foodies-b3c88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797801329798:android:99b6a6e4a1cc373a824d07",
+        "android_client_info": {
+          "package_name": "com.ayoisstillhere.foodies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797801329798-vl8s0lm32fu0lp7dp5cfvo9p3o5gect2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPorqofXyHP4O44_4OuA8Bb5Uoi_WTdoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797801329798-vl8s0lm32fu0lp7dp5cfvo9p3o5gect2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "797801329798-cgm43e4pr7rqfupgmn2potstmbqktmab.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ayoisstillhere.foodies"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

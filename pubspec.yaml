@@ -41,9 +41,10 @@ dependencies:
 dev_dependencies:
   flutter_launcher_icons: ^0.9.3
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.6
+  change_app_package_name: ^1.1.0
   flutter_test:
     sdk: flutter
-  flutter_native_splash: ^2.2.6
 
 flutter_native_splash:
   color: "191919"

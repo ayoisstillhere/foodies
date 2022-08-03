@@ -3,7 +3,7 @@ import 'package:foodies/features/signup/domain/repositories/firebase_repository.
 class IsLoginUseCase {
   final FirebaseRepository repository;
 
-  IsLoginUseCase(this.repository);
+  IsLoginUseCase({required this.repository});
 
   Future<bool> call() async => await repository.isLogin();
 }

@@ -3,7 +3,7 @@ import 'package:foodies/features/signup/domain/repositories/firebase_repository.
 class GetCurrentUidUseCase {
   final FirebaseRepository repository;
 
-  GetCurrentUidUseCase(this.repository);
+  GetCurrentUidUseCase({required this.repository});
 
   Future<String> call() async => await repository.getCurrentUid();
 }

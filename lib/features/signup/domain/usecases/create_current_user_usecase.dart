@@ -3,7 +3,7 @@ import 'package:foodies/features/signup/domain/repositories/firebase_repository.
 class CreateCurrentUserUsecase {
   final FirebaseRepository repository;
 
-  CreateCurrentUserUsecase(this.repository);
+  CreateCurrentUserUsecase({required this.repository});
 
   Future<void> call(
     String email,

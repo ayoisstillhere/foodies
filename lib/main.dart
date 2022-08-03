@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodies/features/signup/presentation/auth_bloc/auth_cubit.dart';
 
 import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'routes.dart';
@@ -18,12 +20,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Foodies',
-      theme: theme(),
-      initialRoute: OnboardingScreen.routeName,
-      routes: routes,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (_) => AuthCubit(
+            isLoginUseCase: isLoginUseCase,
+            getCurrentUidUseCase: getCurrentUidUseCase,
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Foodies',
+        theme: theme(),
+        initialRoute: OnboardingScreen.routeName,
+        routes: routes,
+      ),
     );
   }
 }

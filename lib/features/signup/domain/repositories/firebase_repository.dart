@@ -7,7 +7,6 @@ abstract class FirebaseRepository {
     String email,
     String firstName,
     String lastName,
-    String uid,
     String userClass,
     String hall,
     String floor,

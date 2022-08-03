@@ -9,7 +9,6 @@ class CreateCurrentUserUsecase {
     String email,
     String firstName,
     String lastName,
-    String uid,
     String userClass,
     String hall,
     String floor,
@@ -17,6 +16,6 @@ class CreateCurrentUserUsecase {
     String roomNo,
   ) async {
     repository.createCurrentUser(
-        email, firstName, lastName, uid, userClass, hall, floor, wing, roomNo);
+        email, firstName, lastName, userClass, hall, floor, wing, roomNo);
   }
 }

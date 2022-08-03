@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> AppStarted() async {
     try {
       final isLogin = await isLoginUseCase.call();
-      if (isLogin) {
+      if (isLogin == true) {
         final currentUid = await getCurrentUidUseCase.call();
 
         emit(Authenticated(uid: currentUid));

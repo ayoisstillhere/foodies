@@ -22,6 +22,8 @@ class _BodyState extends State<Body> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  final List<String> errors = [];
+
   @override
   void initState() {
     _firstNameController = TextEditingController();

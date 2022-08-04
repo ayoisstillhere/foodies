@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodies/components/form_error.dart';
 import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 
@@ -68,6 +69,11 @@ class _BodyState extends State<Body> {
             const Spacer(),
             buildPasswordFormField(),
             const Spacer(flex: 2),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(31)),
+              child: FormError(errors: errors),
+            ),
             DefaultButton(
               text: "Login",
               press: () {

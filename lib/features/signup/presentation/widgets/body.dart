@@ -112,6 +112,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _confirmPasswordController,
           obscureText: true,
           decoration: const InputDecoration(
             labelText: "Confirm Password",
@@ -134,6 +135,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
             labelText: "Password",
@@ -156,6 +158,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(
             labelText: "Email",
@@ -178,6 +181,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _firstNameController,
           decoration: const InputDecoration(
             labelText: "First name",
             hintText: "Enter your first name",
@@ -199,6 +203,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _lastNameController,
           decoration: const InputDecoration(
             labelText: "Last name",
             hintText: "Enter your last name",

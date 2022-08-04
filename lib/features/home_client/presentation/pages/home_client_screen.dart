@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/components/default_button.dart';
 import 'package:foodies/constants.dart';
+import 'package:foodies/features/onboarding/presentation/pages/onboarding_screen.dart';
 
 import '../../../../size_config.dart';
 
@@ -23,6 +24,7 @@ class HomeClientScreen extends StatelessWidget {
           text: "SignOut",
           press: () {
             auth.signOut();
+            Navigator.pushNamed(context, OnboardingScreen.routeName);
           },
           color: kSecondaryColor,
         ),

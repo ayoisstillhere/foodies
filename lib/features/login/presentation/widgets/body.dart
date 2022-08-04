@@ -53,6 +53,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _loginFormKey,
       child: Center(
         child: Column(
           children: [

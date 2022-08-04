@@ -16,6 +16,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final _signupFormKey = GlobalKey<FormState>();
   TextEditingController _firstNameController = TextEditingController();
   TextEditingController _lastNameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
@@ -62,37 +63,40 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const FormHeader(
-            title: "Complete Profile",
-            subTitle: "Complete your details and move on to the next step",
-          ),
-          const Spacer(),
-          buildFirstNameFormField(),
-          const Spacer(),
-          buildLastNameFormField(),
-          const Spacer(),
-          buildEmailFormField(),
-          const Spacer(),
-          buildPasswordFormField(),
-          const Spacer(),
-          buildConfirmPasswordFormField(),
-          const Spacer(),
-          DefaultButton(
-            text: "Continue",
-            press: () {
-              Navigator.pushNamed(context, CompleteDetailsScreen.routeName);
-            },
-            color: kSecondaryColor,
-          ),
-          const Spacer(),
-          buildLoginText(() {
-            Navigator.pushNamed(context, LoginScreen.routeName);
-          }),
-          const Spacer(flex: 2),
-        ],
+    return Form(
+      key: _signupFormKey,
+      child: Center(
+        child: Column(
+          children: [
+            const FormHeader(
+              title: "Complete Profile",
+              subTitle: "Complete your details and move on to the next step",
+            ),
+            const Spacer(),
+            buildFirstNameFormField(),
+            const Spacer(),
+            buildLastNameFormField(),
+            const Spacer(),
+            buildEmailFormField(),
+            const Spacer(),
+            buildPasswordFormField(),
+            const Spacer(),
+            buildConfirmPasswordFormField(),
+            const Spacer(),
+            DefaultButton(
+              text: "Continue",
+              press: () {
+                Navigator.pushNamed(context, CompleteDetailsScreen.routeName);
+              },
+              color: kSecondaryColor,
+            ),
+            const Spacer(),
+            buildLoginText(() {
+              Navigator.pushNamed(context, LoginScreen.routeName);
+            }),
+            const Spacer(flex: 2),
+          ],
+        ),
       ),
     );
   }

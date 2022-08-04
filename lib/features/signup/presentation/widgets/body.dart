@@ -139,6 +139,13 @@ class _BodyState extends State<Body> {
               removeError(error: kMatchPassError);
             }
           }),
+          validator: (value) {
+            if (value == _passwordController.text.trim()) {
+              addError(error: kMatchPassError);
+              return "";
+            }
+            return null;
+          },
           controller: _confirmPasswordController,
           obscureText: true,
           decoration: const InputDecoration(
@@ -168,6 +175,16 @@ class _BodyState extends State<Body> {
             } else if (value.length >= 8) {
               removeError(error: kShortPassError);
             }
+          },
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kPassNullError);
+              return "";
+            } else if (value.length < 8) {
+              addError(error: kShortPassError);
+              return "";
+            }
+            return null;
           },
           controller: _passwordController,
           obscureText: true,
@@ -199,6 +216,15 @@ class _BodyState extends State<Body> {
               removeError(error: kInvalidEmailError);
             }
           }),
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kEmailNullError);
+              return "";
+            } else if (!emailValidatorRegExp.hasMatch(value)) {
+              return "";
+            }
+            return null;
+          },
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(
@@ -227,6 +253,13 @@ class _BodyState extends State<Body> {
               removeError(error: kFirstNameNullError);
             }
           },
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kFirstNameNullError);
+              return "";
+            }
+            return null;
+          },
           controller: _firstNameController,
           decoration: const InputDecoration(
             labelText: "First name",
@@ -253,6 +286,13 @@ class _BodyState extends State<Body> {
             if (value.isNotEmpty) {
               removeError(error: kLastNameNullError);
             }
+          },
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kLastNameNullError);
+              return "";
+            }
+            return null;
           },
           controller: _lastNameController,
           decoration: const InputDecoration(

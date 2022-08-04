@@ -122,6 +122,16 @@ class _BodyState extends State<Body> {
               removeError(error: kShortPassError);
             }
           },
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kPassNullError);
+              return "";
+            } else if (value.length < 8) {
+              addError(error: kShortPassError);
+              return "";
+            }
+            return null;
+          },
           controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
@@ -152,6 +162,15 @@ class _BodyState extends State<Body> {
               removeError(error: kInvalidEmailError);
             }
           }),
+          validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kEmailNullError);
+              return "";
+            } else if (!emailValidatorRegExp.hasMatch(value)) {
+              return "";
+            }
+            return null;
+          },
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(

@@ -94,6 +94,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
             labelText: "Password",
@@ -116,6 +117,7 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(
             labelText: "Email",

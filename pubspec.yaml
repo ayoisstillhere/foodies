@@ -77,6 +77,7 @@ flutter:
     - assets/icons/number_icon.svg
     - assets/images/choose_option_client.svg
     - assets/images/choose_option_partner.svg
+    - assets/icons/Error.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

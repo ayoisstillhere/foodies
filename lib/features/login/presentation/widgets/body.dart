@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
@@ -68,7 +70,15 @@ class _BodyState extends State<Body> {
             const Spacer(flex: 2),
             DefaultButton(
               text: "Login",
-              press: () {},
+              press: () {
+                if (_loginFormKey.currentState!.validate()) {
+                  _loginFormKey.currentState!.save();
+                  BlocProvider.of<LoginCubit>(context).submitLogin(
+                    email: _emailController.text.trim(),
+                    password: _passwordController.text.trim(),
+                  );
+                }
+              },
               color: kSecondaryColor,
             ),
             const Spacer(),

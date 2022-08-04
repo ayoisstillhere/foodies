@@ -131,30 +131,27 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          onChanged: ((value) {
-            if (value == _passwordController.text.trim()) {
-              removeError(error: kMatchPassError);
-            }
-          }),
-          validator: (value) {
-            if (value == _passwordController.text.trim()) {
-              addError(error: kMatchPassError);
-              return "";
-            }
-            return null;
-          },
-          controller: _confirmPasswordController,
-          obscureText: true,
-          decoration: const InputDecoration(
-            labelText: "Confirm Password",
-            hintText: "Confirm your password",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/password_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: ((value) {
+          if (value == _passwordController.text.trim()) {
+            removeError(error: kMatchPassError);
+          }
+        }),
+        validator: (value) {
+          if (value == _passwordController.text.trim()) {
+            addError(error: kMatchPassError);
+            return "";
+          }
+          return null;
+        },
+        controller: _confirmPasswordController,
+        obscureText: true,
+        decoration: const InputDecoration(
+          labelText: "Confirm Password",
+          hintText: "Confirm your password",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/password_icon.svg',
           ),
         ),
       ),
@@ -166,35 +163,33 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          onChanged: (value) {
-            if (value.isNotEmpty) {
-              removeError(error: kPassNullError);
-            } else if (value.length >= 8) {
-              removeError(error: kShortPassError);
-            }
-          },
-          validator: (value) {
-            if (value!.isEmpty) {
-              addError(error: kPassNullError);
-              return "";
-            } else if (value.length < 8) {
-              addError(error: kShortPassError);
-              return "";
-            }
-            return null;
-          },
-          controller: _passwordController,
-          obscureText: true,
-          decoration: const InputDecoration(
-            labelText: "Password",
-            hintText: "Enter your password",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/password_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: kPassNullError);
+          }
+          if (value.length >= 8) {
+            removeError(error: kShortPassError);
+          }
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kPassNullError);
+            return "";
+          } else if (value.length < 8) {
+            addError(error: kShortPassError);
+            return "";
+          }
+          return null;
+        },
+        controller: _passwordController,
+        obscureText: true,
+        decoration: const InputDecoration(
+          labelText: "Password",
+          hintText: "Enter your password",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/password_icon.svg',
           ),
         ),
       ),
@@ -206,34 +201,32 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          onChanged: ((value) {
-            if (value.isNotEmpty) {
-              removeError(error: kEmailNullError);
-            } else if (emailValidatorRegExp.hasMatch(value)) {
-              removeError(error: kInvalidEmailError);
-            }
-          }),
-          validator: (value) {
-            if (value!.isEmpty) {
-              addError(error: kEmailNullError);
-              return "";
-            } else if (!emailValidatorRegExp.hasMatch(value)) {
-              return "";
-            }
-            return null;
-          },
-          controller: _emailController,
-          keyboardType: TextInputType.emailAddress,
-          decoration: const InputDecoration(
-            labelText: "Email",
-            hintText: "Enter your email",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/email_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: ((value) {
+          if (value.isNotEmpty) {
+            removeError(error: kEmailNullError);
+          }
+          if (emailValidatorRegExp.hasMatch(value)) {
+            removeError(error: kInvalidEmailError);
+          }
+        }),
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kEmailNullError);
+            return "";
+          } else if (!emailValidatorRegExp.hasMatch(value)) {
+            return "";
+          }
+          return null;
+        },
+        controller: _emailController,
+        keyboardType: TextInputType.emailAddress,
+        decoration: const InputDecoration(
+          labelText: "Email",
+          hintText: "Enter your email",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/email_icon.svg',
           ),
         ),
       ),
@@ -245,29 +238,26 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          onChanged: (value) {
-            if (value.isNotEmpty) {
-              removeError(error: kFirstNameNullError);
-            }
-          },
-          validator: (value) {
-            if (value!.isEmpty) {
-              addError(error: kFirstNameNullError);
-              return "";
-            }
-            return null;
-          },
-          controller: _firstNameController,
-          decoration: const InputDecoration(
-            labelText: "First name",
-            hintText: "Enter your first name",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/user_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: kFirstNameNullError);
+          }
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kFirstNameNullError);
+            return "";
+          }
+          return null;
+        },
+        controller: _firstNameController,
+        decoration: const InputDecoration(
+          labelText: "First name",
+          hintText: "Enter your first name",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/user_icon.svg',
           ),
         ),
       ),
@@ -279,29 +269,26 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          onChanged: (value) {
-            if (value.isNotEmpty) {
-              removeError(error: kLastNameNullError);
-            }
-          },
-          validator: (value) {
-            if (value!.isEmpty) {
-              addError(error: kLastNameNullError);
-              return "";
-            }
-            return null;
-          },
-          controller: _lastNameController,
-          decoration: const InputDecoration(
-            labelText: "Last name",
-            hintText: "Enter your last name",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/user_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: kLastNameNullError);
+          }
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kLastNameNullError);
+            return "";
+          }
+          return null;
+        },
+        controller: _lastNameController,
+        decoration: const InputDecoration(
+          labelText: "Last name",
+          hintText: "Enter your last name",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/user_icon.svg',
           ),
         ),
       ),

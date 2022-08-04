@@ -15,6 +15,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final _loginFormKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final List<String> errors = [];
@@ -51,29 +52,31 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const FormHeader(
-            title: 'Welcome Back',
-            subTitle: 'Sign In with your email and password',
-          ),
-          const Spacer(flex: 2),
-          buildEmailFormField(),
-          const Spacer(),
-          buildPasswordFormField(),
-          const Spacer(flex: 2),
-          DefaultButton(
-            text: "Login",
-            press: () {},
-            color: kSecondaryColor,
-          ),
-          const Spacer(),
-          buildSignUpText(() {
-            Navigator.pushNamed(context, SignupScreen.routeName);
-          }),
-          const Spacer(flex: 5),
-        ],
+    return Form(
+      child: Center(
+        child: Column(
+          children: [
+            const FormHeader(
+              title: 'Welcome Back',
+              subTitle: 'Sign In with your email and password',
+            ),
+            const Spacer(flex: 2),
+            buildEmailFormField(),
+            const Spacer(),
+            buildPasswordFormField(),
+            const Spacer(flex: 2),
+            DefaultButton(
+              text: "Login",
+              press: () {},
+              color: kSecondaryColor,
+            ),
+            const Spacer(),
+            buildSignUpText(() {
+              Navigator.pushNamed(context, SignupScreen.routeName);
+            }),
+            const Spacer(flex: 5),
+          ],
+        ),
       ),
     );
   }

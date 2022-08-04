@@ -130,6 +130,11 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: ((value) {
+            if (value == _passwordController.text.trim()) {
+              removeError(error: kMatchPassError);
+            }
+          }),
           controller: _confirmPasswordController,
           obscureText: true,
           decoration: const InputDecoration(
@@ -153,6 +158,13 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: (value) {
+            if (value.isNotEmpty) {
+              removeError(error: kPassNullError);
+            } else if (value.length >= 8) {
+              removeError(error: kShortPassError);
+            }
+          },
           controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
@@ -176,6 +188,13 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: ((value) {
+            if (value.isNotEmpty) {
+              removeError(error: kEmailNullError);
+            } else if (emailValidatorRegExp.hasMatch(value)) {
+              removeError(error: kInvalidEmailError);
+            }
+          }),
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(
@@ -199,6 +218,11 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: (value) {
+            if (value.isNotEmpty) {
+              removeError(error: kFirstNameNullError);
+            }
+          },
           controller: _firstNameController,
           decoration: const InputDecoration(
             labelText: "First name",
@@ -221,6 +245,11 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: (value) {
+            if (value.isNotEmpty) {
+              removeError(error: kLastNameNullError);
+            }
+          },
           controller: _lastNameController,
           decoration: const InputDecoration(
             labelText: "Last name",

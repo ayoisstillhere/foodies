@@ -48,7 +48,7 @@ class _BodyState extends State<Body> {
       });
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -111,6 +111,13 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: (value) {
+            if (value.isNotEmpty) {
+              removeError(error: kPassNullError);
+            } else if (value.length >= 8) {
+              removeError(error: kShortPassError);
+            }
+          },
           controller: _passwordController,
           obscureText: true,
           decoration: const InputDecoration(
@@ -134,6 +141,13 @@ class _BodyState extends State<Body> {
       child: SizedBox(
         height: getProportionateScreenHeight(50),
         child: TextFormField(
+          onChanged: ((value) {
+            if (value.isNotEmpty) {
+              removeError(error: kEmailNullError);
+            } else if (emailValidatorRegExp.hasMatch(value)) {
+              removeError(error: kInvalidEmailError);
+            }
+          }),
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(

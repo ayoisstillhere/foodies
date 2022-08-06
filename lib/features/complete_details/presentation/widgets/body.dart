@@ -25,6 +25,20 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  TextEditingController _roomNoController = TextEditingController();
+
+  @override
+  void initState() {
+    _roomNoController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _roomNoController.dispose();
+    super.dispose();
+  }
+  
   static const hallValues = <String>[
     'John',
     'Joseph',
@@ -92,7 +106,7 @@ class _BodyState extends State<Body> {
         DefaultButton(
           text: "Sign Up",
           press: () {
-            Navigator.pushNamed(context, ChooseOptionScreen.routeName);
+            Navigator.push(context, MaterialPageRoute(builder: (_) => ));
           },
           color: kSecondaryColor,
         ),

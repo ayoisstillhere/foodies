@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodies/components/form_error.dart';
 import 'package:foodies/features/home_client/presentation/pages/home_client_screen.dart';
 import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
+import 'package:foodies/features/signup/presentation/auth_bloc/auth_cubit.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
@@ -57,6 +58,30 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if (state is LoginSuccess) {
+          // BlocProvider.of<AuthCubit>(context).loggedIn();
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => HomeClientScreen(
+                      uid: FirebaseAuth.instance.currentUser!.uid)));
+        }
+        if (state is LoginFailure) {
+          addError(error: "Invalid Login");
+        }
+      },
+      builder: (context, state) {
+        if (state is LoginLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return loginForm(context);
+      },
+    );
+  }
+
+  Form loginForm(BuildContext context) {
     return Form(
       key: _loginFormKey,
       child: Center(

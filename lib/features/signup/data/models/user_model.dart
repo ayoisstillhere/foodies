@@ -45,15 +45,15 @@ class UserModel extends UserEntity {
 
   Map<String, dynamic> toDocument() {
     return {
-      email: "email",
-      firstName: "firstName",
-      lastName: "lastName",
-      uid: "uid",
-      userClass: "userClass",
-      hall: "hall",
-      floor: "floor",
-      wing: "wing",
-      roomNo: "roomNo",
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "uid": uid,
+      "userClass": userClass,
+      "hall": hall,
+      "floor": floor,
+      "wing": wing,
+      "roomNo": roomNo,
     };
   }
 }

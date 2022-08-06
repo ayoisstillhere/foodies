@@ -8,7 +8,17 @@ import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body(
+      {Key? key,
+      required this.firstName,
+      required this.lastName,
+      required this.email,
+      required this.password})
+      : super(key: key);
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
 
   @override
   State<Body> createState() => _BodyState();

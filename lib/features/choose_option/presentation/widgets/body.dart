@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/form_header.dart';
@@ -11,6 +14,7 @@ class Body extends StatefulWidget {
   const Body({
     Key? key,
     required this.email,
+    required this.password,
     required this.firstName,
     required this.lastName,
     required this.hall,
@@ -19,6 +23,7 @@ class Body extends StatefulWidget {
     required this.roomNo,
   }) : super(key: key);
   final String email;
+  final String password;
   final String firstName;
   final String lastName;
   final String hall;
@@ -88,5 +93,9 @@ class _BodyState extends State<Body> {
         const Spacer(),
       ],
     );
+  }
+
+  void _submitRegisteration() {
+    BlocProvider.of<LoginCubit>(context).submitRegisteration(email: widget.email, password: widget., firstName: firstName, lastName: lastName, userClass: userClass, hall: hall, floor: floor, wing: wing, roomNo: roomNo)
   }
 }

@@ -7,6 +7,7 @@ class ChooseOptionScreen extends StatelessWidget {
   const ChooseOptionScreen({
     Key? key,
     required this.email,
+    required this.password,
     required this.firstName,
     required this.lastName,
     required this.hall,
@@ -15,6 +16,7 @@ class ChooseOptionScreen extends StatelessWidget {
     required this.roomNo,
   }) : super(key: key);
   final String email;
+  final String password;
   final String firstName;
   final String lastName;
   final String hall;
@@ -28,7 +30,16 @@ class ChooseOptionScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Choose an Option"),
       ),
-      body: Body(email: email, firstName: firstName, lastName: lastName, hall: hall, floor: floor, wing: wing, roomNo: roomNo),
+      body: Body(
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        hall: hall,
+        floor: floor,
+        wing: wing,
+        roomNo: roomNo,
+        password: password,
+      ),
     );
   }
 }

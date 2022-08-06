@@ -4,7 +4,23 @@ import '../widgets/body.dart';
 
 class ChooseOptionScreen extends StatelessWidget {
   static String routeName = "/chooseOption";
-  const ChooseOptionScreen({Key? key}) : super(key: key);
+  const ChooseOptionScreen({
+    Key? key,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.hall,
+    required this.floor,
+    required this.wing,
+    required this.roomNo,
+  }) : super(key: key);
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String hall;
+  final String floor;
+  final String wing;
+  final String roomNo;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +28,7 @@ class ChooseOptionScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Choose an Option"),
       ),
-      body: Body(),
+      body: Body(email: email, firstName: firstName, lastName: lastName, hall: hall, floor: floor, wing: wing, roomNo: roomNo),
     );
   }
 }

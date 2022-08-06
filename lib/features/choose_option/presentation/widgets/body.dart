@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../components/default_button.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-
 import 'option_card.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({
+    Key? key,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.hall,
+    required this.floor,
+    required this.wing,
+    required this.roomNo,
+  }) : super(key: key);
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String hall;
+  final String floor;
+  final String wing;
+  final String roomNo;
 
   @override
   State<Body> createState() => _BodyState();

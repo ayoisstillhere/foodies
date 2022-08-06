@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodies/components/form_error.dart';
+import 'package:foodies/features/home_client/presentation/pages/home_client_screen.dart';
 import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 
@@ -76,15 +78,7 @@ class _BodyState extends State<Body> {
             ),
             DefaultButton(
               text: "Login",
-              press: () {
-                if (_loginFormKey.currentState!.validate()) {
-                  _loginFormKey.currentState!.save();
-                  BlocProvider.of<LoginCubit>(context).submitLogin(
-                    email: _emailController.text.trim(),
-                    password: _passwordController.text.trim(),
-                  );
-                }
-              },
+              press: _submitLogin,
               color: kSecondaryColor,
             ),
             const Spacer(),
@@ -197,5 +191,15 @@ class _BodyState extends State<Body> {
         ),
       ),
     );
+  }
+
+  void _submitLogin() async {
+    if (_loginFormKey.currentState!.validate()) {
+      _loginFormKey.currentState!.save();
+      await BlocProvider.of<LoginCubit>(context).submitLogin(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    }
   }
 }

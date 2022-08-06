@@ -15,3 +15,4 @@ const String kShortPassError = "Password is too short";
 const String kMatchPassError = "Passwords don't match";
 const String kFirstNameNullError = "Please Enter your first name";
 const String kLastNameNullError = "Please Enter your last name";
+const String kRoomNoNullError = "Please Enter your Room Number";

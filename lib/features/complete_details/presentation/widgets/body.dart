@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../components/default_button.dart';
+import '../../../../components/form_error.dart';
 import '../../../choose_option/presentation/pages/choose_option_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
@@ -25,7 +26,10 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final _completeDetailsFormKey = GlobalKey<FormState>();
   TextEditingController _roomNoController = TextEditingController();
+
+  final List<String> errors = [];
 
   @override
   void initState() {
@@ -38,7 +42,23 @@ class _BodyState extends State<Body> {
     _roomNoController.dispose();
     super.dispose();
   }
-  
+
+  void addError({required String error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({required String error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
   static const hallValues = <String>[
     'John',
     'Joseph',
@@ -78,40 +98,62 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Center(
-          child: FormHeader(
-            title: "Complete Profile",
-            subTitle: "Enter your room details so we can get you some chow!",
+    return Form(
+      key: _completeDetailsFormKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Center(
+            child: FormHeader(
+              title: "Complete Profile",
+              subTitle: "Enter your room details so we can get you some chow!",
+            ),
           ),
-        ),
-        const Spacer(),
-        sectionTitle("Hall"),
-        buildHallRadios(),
-        const Spacer(),
-        sectionTitle("Floor"),
-        buildFloorRadios(),
-        const Spacer(),
-        sectionTitle("Wing"),
-        buildWingRadios(),
-        const Spacer(),
-        sectionTitle("Room No."),
-        const Spacer(),
-        buildRoomNoField(),
-        const Spacer(
-          flex: 4,
-        ),
-        DefaultButton(
-          text: "Sign Up",
-          press: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => ));
-          },
-          color: kSecondaryColor,
-        ),
-        const Spacer(flex: 4),
-      ],
+          const Spacer(),
+          sectionTitle("Hall"),
+          buildHallRadios(),
+          const Spacer(),
+          sectionTitle("Floor"),
+          buildFloorRadios(),
+          const Spacer(),
+          sectionTitle("Wing"),
+          buildWingRadios(),
+          const Spacer(),
+          sectionTitle("Room No."),
+          const Spacer(),
+          buildRoomNoField(),
+          const Spacer(
+            flex: 4,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(31)),
+            child: FormError(errors: errors),
+          ),
+          DefaultButton(
+            text: "Sign Up",
+            press: () {
+              if (_completeDetailsFormKey.currentState!.validate()) {
+                _completeDetailsFormKey.currentState!.save();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => ChooseOptionScreen(
+                              email: widget.email,
+                              firstName: widget.firstName,
+                              lastName: widget.lastName,
+                              hall: selectedHall,
+                              floor: selectedFloor,
+                              wing: selectedWing,
+                              roomNo: _roomNoController.text.trim(),
+                            )));
+              }
+            },
+            color: kSecondaryColor,
+          ),
+          const Spacer(flex: 4),
+        ],
+      ),
     );
   }
 
@@ -120,16 +162,26 @@ class _BodyState extends State<Body> {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(31.0),
       ),
-      child: SizedBox(
-        height: getProportionateScreenHeight(50),
-        child: TextFormField(
-          decoration: const InputDecoration(
-            labelText: "Room Number",
-            hintText: "E.g H304",
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSuffixIcon(
-              svgIcon: 'assets/icons/number_icon.svg',
-            ),
+      child: TextFormField(
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: kRoomNoNullError);
+          }
+        },
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: kRoomNoNullError);
+            return "";
+          }
+          return null;
+        },
+        controller: _roomNoController,
+        decoration: const InputDecoration(
+          labelText: "Room Number",
+          hintText: "E.g H304",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSuffixIcon(
+            svgIcon: 'assets/icons/number_icon.svg',
           ),
         ),
       ),

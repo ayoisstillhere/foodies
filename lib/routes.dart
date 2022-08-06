@@ -28,7 +28,7 @@ final Map<String, WidgetBuilder> routes = {
   OnboardingScreen.routeName: (context) => const OnboardingScreen(),
   LoginScreen.routeName: (context) => const LoginScreen(),
   SignupScreen.routeName: (context) => const SignupScreen(),
-  CompleteDetailsScreen.routeName: (context) => const CompleteDetailsScreen(),
+  // CompleteDetailsScreen.routeName: (context) => const CompleteDetailsScreen(),
   ChooseOptionScreen.routeName: (context) => const ChooseOptionScreen(),
   // HomeClientScreen.routeName: (context) => const HomeClientScreen(uid: ,),
 };

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../components/default_button.dart';
+import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../complete_details/presentation/pages/complete_details_screen.dart';
@@ -83,10 +84,28 @@ class _BodyState extends State<Body> {
             const Spacer(),
             buildConfirmPasswordFormField(),
             const Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(31)),
+              child: FormError(errors: errors),
+            ),
             DefaultButton(
               text: "Continue",
               press: () {
-                Navigator.pushNamed(context, CompleteDetailsScreen.routeName);
+                if (_signupFormKey.currentState!.validate()) {
+                  _signupFormKey.currentState!.save();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => CompleteDetailsScreen(
+                        firstName: _firstNameController.text.trim(),
+                        lastName: _lastNameController.text.trim(),
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim(),
+                      ),
+                    ),
+                  );
+                }
               },
               color: kSecondaryColor,
             ),
@@ -138,7 +157,7 @@ class _BodyState extends State<Body> {
           }
         }),
         validator: (value) {
-          if (value == _passwordController.text.trim()) {
+          if (value != _passwordController.text.trim()) {
             addError(error: kMatchPassError);
             return "";
           }
@@ -215,6 +234,7 @@ class _BodyState extends State<Body> {
             addError(error: kEmailNullError);
             return "";
           } else if (!emailValidatorRegExp.hasMatch(value)) {
+            addError(error: kInvalidEmailError);
             return "";
           }
           return null;

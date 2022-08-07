@@ -17,6 +17,7 @@ abstract class FirebaseRemoteDataSource {
     String wing,
     String roomNo,
   );
+  Stream<List<UserModel>> getUsers();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
@@ -69,5 +70,12 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         return;
       }
     });
+  }
+
+  @override
+  Stream<List<UserModel>> getUsers() {
+    return _userCollection.snapshots().map((querySnapshot) => querySnapshot.docs
+        .map((docSnapshot) => UserModel.fromSnapshot(docSnapshot))
+        .toList());
   }
 }

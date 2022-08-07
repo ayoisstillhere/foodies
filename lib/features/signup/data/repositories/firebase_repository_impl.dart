@@ -1,3 +1,5 @@
+import 'package:foodies/features/signup/domain/entities/user_entity.dart';
+
 import '../datasources/firebase_remote_datasource.dart';
 import '../../domain/repositories/firebase_repository.dart';
 
@@ -41,5 +43,11 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
       wing,
       roomNo,
     );
+  }
+
+  @override
+  Stream<List<UserEntity>> getUsers() {
+    // TODO: implement getUsers
+    throw UnimplementedError();
   }
 }

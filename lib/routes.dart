@@ -6,6 +6,7 @@ import 'features/login/presentation/pages/login_screen.dart';
 import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'features/signup/presentation/auth_bloc/auth_cubit.dart';
 import 'features/signup/presentation/pages/signup_screen.dart';
+import 'size_config.dart';
 
 // in order to use named routes
 // all routes wull be made available here
@@ -13,6 +14,7 @@ final Map<String, WidgetBuilder> routes = {
   "/": (context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, authState) {
+      SizeConfig().init(context);
         if (authState is Authenticated) {
           return HomeClientScreen(uid: authState.uid);
         }

@@ -1,4 +1,4 @@
-import 'package:foodies/features/signup/domain/repositories/firebase_repository.dart';
+import '../repositories/firebase_repository.dart';
 
 class CreateCurrentUserUsecase {
   final FirebaseRepository repository;

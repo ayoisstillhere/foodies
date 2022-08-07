@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
+import '../../../login/presentation/login_cubit/login_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/form_error.dart';

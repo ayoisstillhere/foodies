@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../signup/presentation/pages/signup_screen.dart';
-import '../../../login/presentation/pages/login_screen.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../login/presentation/pages/login_screen.dart';
+import '../../../signup/presentation/pages/signup_screen.dart';
 import 'onboarding_content.dart';
 
 class Body extends StatefulWidget {

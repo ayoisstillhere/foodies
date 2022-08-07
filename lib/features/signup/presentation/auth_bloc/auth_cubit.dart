@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:foodies/features/signup/domain/usecases/get_current_uid_usecase.dart';
-import 'package:foodies/features/signup/domain/usecases/is_login_usecase.dart';
+import '../../domain/usecases/get_current_uid_usecase.dart';
+import '../../domain/usecases/is_login_usecase.dart';
 
 part 'auth_state.dart';
 

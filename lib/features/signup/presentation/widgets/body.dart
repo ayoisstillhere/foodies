@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+
+import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';
 import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
+import '../../../../size_config.dart';
 import '../../../complete_details/presentation/pages/complete_details_screen.dart';
 import '../../../login/presentation/pages/login_screen.dart';
-
-import '../../../../components/custom_suffix_icon.dart';
-import '../../../../size_config.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

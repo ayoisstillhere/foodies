@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodies/components/form_error.dart';
-import 'package:foodies/features/home_client/presentation/pages/home_client_screen.dart';
-import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
-import 'package:foodies/features/signup/presentation/auth_bloc/auth_cubit.dart';
+import '../../../../components/form_error.dart';
+import '../../../home_client/presentation/pages/home_client_screen.dart';
+import '../login_cubit/login_cubit.dart';
+import '../../../signup/presentation/auth_bloc/auth_cubit.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';

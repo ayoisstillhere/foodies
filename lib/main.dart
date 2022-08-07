@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
-import 'package:foodies/features/signup/presentation/auth_bloc/auth_cubit.dart';
+import 'features/login/presentation/login_cubit/login_cubit.dart';
+import 'features/signup/presentation/auth_bloc/auth_cubit.dart';
 import 'injection_container.dart' as di;
 import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'routes.dart';

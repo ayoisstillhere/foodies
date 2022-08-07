@@ -1,5 +1,5 @@
-import 'package:foodies/features/signup/data/datasources/firebase_remote_datasource.dart';
-import 'package:foodies/features/signup/domain/repositories/firebase_repository.dart';
+import '../datasources/firebase_remote_datasource.dart';
+import '../../domain/repositories/firebase_repository.dart';
 
 class FirebaseRepositoryImpl implements FirebaseRepository {
   final FirebaseRemoteDataSource firebaseRemoteDataSource;

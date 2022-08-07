@@ -47,7 +47,6 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
 
   @override
   Stream<List<UserEntity>> getUsers() {
-    // TODO: implement getUsers
-    throw UnimplementedError();
+    return firebaseRemoteDataSource.getUsers();
   }
 }

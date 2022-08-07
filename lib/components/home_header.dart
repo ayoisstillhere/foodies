@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -7,7 +6,9 @@ import '../size_config.dart';
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
     Key? key,
+    required this.firstName,
   }) : super(key: key);
+  final String firstName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class HomeHeader extends StatelessWidget {
         color: kPrimaryColor,
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(31)),
+        padding:
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(31)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,7 +32,7 @@ class HomeHeader extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(20)),
             Text(
-              "Welcome, Ayodele!",
+              "Welcome, $firstName!",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

@@ -1,3 +1,5 @@
+import 'package:foodies/features/signup/domain/usecases/get_users_usecase.dart';
+
 import 'features/login/presentation/login_cubit/login_cubit.dart';
 import 'features/signup/data/datasources/firebase_remote_datasource.dart';
 import 'features/signup/data/repositories/firebase_repository_impl.dart';
@@ -32,6 +34,8 @@ Future<void> init() async {
       () => LoginUseCase(repository: sl.call()));
   sl.registerLazySingleton<SignupUseCase>(
       () => SignupUseCase(repository: sl.call()));
+  sl.registerLazySingleton<GetUsersUsecase>(
+      () => GetUsersUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

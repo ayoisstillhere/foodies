@@ -10,8 +10,8 @@ part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   final GetUsersUsecase usersUsecase;
-  UserCubit(
-    this.usersUsecase,
+  UserCubit({
+    required this.usersUsecase,}
   ) : super(UserInitial());
 
   Future<void> getUsers() async {

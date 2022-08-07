@@ -1,3 +1,4 @@
+import 'package:foodies/features/home_client/presentation/user_bloc/user_cubit.dart';
 import 'package:foodies/features/signup/domain/usecases/get_users_usecase.dart';
 
 import 'features/login/presentation/login_cubit/login_cubit.dart';
@@ -22,6 +23,7 @@ Future<void> init() async {
       signupUseCase: sl.call(),
       loginUseCase: sl.call(),
       createCurrentUserUsecase: sl.call()));
+  sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsLoginUseCase>(

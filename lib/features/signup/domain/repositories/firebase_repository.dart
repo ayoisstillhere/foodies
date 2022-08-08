@@ -16,4 +16,5 @@ abstract class FirebaseRepository {
     String roomNo,
   );
   Stream<List<UserEntity>> getUsers();
+  Stream<List<String>> getPartners();
 }

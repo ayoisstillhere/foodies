@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../user_bloc/user_cubit.dart';
+import '../bloc/user_bloc/user_cubit.dart';
 import '../../../signup/data/models/user_model.dart';
 import '../../../../size_config.dart';
 

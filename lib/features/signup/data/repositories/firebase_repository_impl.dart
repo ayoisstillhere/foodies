@@ -49,4 +49,10 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Stream<List<UserEntity>> getUsers() {
     return firebaseRemoteDataSource.getUsers();
   }
+  
+  @override
+  Stream<List<String>> getPartners() {
+    // TODO: implement getPartners
+    throw UnimplementedError();
+  }
 }

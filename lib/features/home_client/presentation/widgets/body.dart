@@ -43,7 +43,7 @@ class _BodyState extends State<Body> {
   SingleChildScrollView homeBody(FirebaseAuth auth, UserLoaded users) {
     final user = users.users.firstWhere(
       (user) => user.uid == widget.uid,
-      orElse: () => UserModel(
+      orElse: () => const UserModel(
           email: "",
           firstName: "",
           lastName: "",

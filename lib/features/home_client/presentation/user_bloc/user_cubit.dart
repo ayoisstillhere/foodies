@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:foodies/features/signup/domain/entities/user_entity.dart';
+import '../../../signup/domain/entities/user_entity.dart';
 
-import 'package:foodies/features/signup/domain/usecases/get_users_usecase.dart';
+import '../../../signup/domain/usecases/get_users_usecase.dart';
 
 part 'user_state.dart';
 

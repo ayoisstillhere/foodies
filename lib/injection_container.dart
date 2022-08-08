@@ -1,5 +1,5 @@
-import 'package:foodies/features/home_client/presentation/user_bloc/user_cubit.dart';
-import 'package:foodies/features/signup/domain/usecases/get_users_usecase.dart';
+import 'features/home_client/presentation/user_bloc/user_cubit.dart';
+import 'features/signup/domain/usecases/get_users_usecase.dart';
 
 import 'features/login/presentation/login_cubit/login_cubit.dart';
 import 'features/signup/data/datasources/firebase_remote_datasource.dart';

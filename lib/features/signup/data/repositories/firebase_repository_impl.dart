@@ -1,4 +1,4 @@
-import 'package:foodies/features/signup/domain/entities/user_entity.dart';
+import '../../domain/entities/user_entity.dart';
 
 import '../datasources/firebase_remote_datasource.dart';
 import '../../domain/repositories/firebase_repository.dart';

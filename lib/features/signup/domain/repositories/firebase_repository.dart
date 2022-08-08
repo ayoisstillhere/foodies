@@ -1,4 +1,4 @@
-import 'package:foodies/features/signup/domain/entities/user_entity.dart';
+import '../entities/user_entity.dart';
 
 abstract class FirebaseRepository {
   Future<void> signUp(String email, String password);

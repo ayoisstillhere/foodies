@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../login/presentation/login_cubit/login_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/form_error.dart';
@@ -11,6 +8,7 @@ import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../../../home_client/presentation/pages/home_client_screen.dart';
+import '../../../login/presentation/login_cubit/login_cubit.dart';
 import 'option_card.dart';
 
 class Body extends StatefulWidget {

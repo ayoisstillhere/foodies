@@ -1,17 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../components/form_error.dart';
-import '../../../home_client/presentation/pages/home_client_screen.dart';
-import '../login_cubit/login_cubit.dart';
-import '../../../signup/presentation/auth_bloc/auth_cubit.dart';
-import '../../../signup/presentation/pages/signup_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';
+import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../home_client/presentation/pages/home_client_screen.dart';
+import '../../../signup/presentation/pages/signup_screen.dart';
+import '../login_cubit/login_cubit.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

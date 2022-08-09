@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:foodies/components/form_header.dart';
 
 import 'package:foodies/features/signup/domain/entities/user_entity.dart';
 
@@ -68,6 +69,27 @@ class _BodyState extends State<Body> {
         partners.add(users.users[i]);
       }
     }
+    if (user.userClass == "Client") {
+      return ClientBody(user: user, partners: partners);
+    } else {
+      return PartnerBody(user: user);
+    }
+  }
+}
+
+class ClientBody extends StatelessWidget {
+  const ClientBody({
+    Key? key,
+    required this.user,
+    required this.partners,
+  }) : super(key: key);
+
+  final UserEntity user;
+  final List<UserEntity> partners;
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
@@ -98,6 +120,45 @@ class _BodyState extends State<Body> {
                 roomNo: partners[index].roomNo,
               );
             },
+          ),
+          Center(
+            child: DefaultButton(
+              text: "SignOut",
+              press: () {
+                auth.signOut();
+                Navigator.pushNamed(context, OnboardingScreen.routeName);
+              },
+              color: kSecondaryColor,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PartnerBody extends StatelessWidget {
+  const PartnerBody({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final UserEntity user;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeHeader(firstName: user.firstName),
+          SizedBox(height: getProportionateScreenHeight(40)),
+          const Center(
+            child: FormHeader(
+              title: "Selected Orders",
+              subTitle: "Tap Orders for Details",
+            ),
           ),
           // Center(
           //   child: DefaultButton(

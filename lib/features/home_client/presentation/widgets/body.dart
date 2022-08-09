@@ -2,14 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../bloc/user_bloc/user_cubit.dart';
-import '../../../signup/data/models/user_model.dart';
-import '../../../../size_config.dart';
+
+import 'package:foodies/features/signup/domain/entities/user_entity.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/home_header.dart';
 import '../../../../constants.dart';
+import '../../../../size_config.dart';
 import '../../../onboarding/presentation/pages/onboarding_screen.dart';
+import '../../../signup/data/models/user_model.dart';
+import '../bloc/user_bloc/user_cubit.dart';
 
 class Body extends StatefulWidget {
   Body({
@@ -42,7 +44,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  SingleChildScrollView homeBody(FirebaseAuth auth, UserLoaded users) {
+  Widget homeBody(FirebaseAuth auth, UserLoaded users) {
     final user = users.users.firstWhere(
       (user) => user.uid == widget.uid,
       orElse: () => const UserModel(
@@ -56,7 +58,17 @@ class _BodyState extends State<Body> {
           wing: "",
           roomNo: ""),
     );
+    final List<UserEntity> partners = [];
+    for (var i = 0; i < users.users.length; i++) {
+      if (users.users[i].hall == user.hall &&
+          users.users[i].wing == user.wing &&
+          users.users[i].floor == user.floor &&
+          users.users[i].userClass == "Partner") {
+        partners.add(users.users[i]);
+      }
+    }
     return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -74,20 +86,27 @@ class _BodyState extends State<Body> {
               ),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          PartnerTile(),
-          PartnerTile(),
-          PartnerTile(),
-          Center(
-            child: DefaultButton(
-              text: "SignOut",
-              press: () {
-                auth.signOut();
-                Navigator.pushNamed(context, OnboardingScreen.routeName);
-              },
-              color: kSecondaryColor,
-            ),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: partners.length,
+            itemBuilder: (BuildContext context, int index) {
+              return PartnerTile(
+                firstName: partners[index].firstName,
+                lastName: partners[index].lastName,
+                roomNo: partners[index].roomNo,
+              );
+            },
           ),
+          // Center(
+          //   child: DefaultButton(
+          //     text: "SignOut",
+          //     press: () {
+          //       auth.signOut();
+          //       Navigator.pushNamed(context, OnboardingScreen.routeName);
+          //     },
+          //     color: kSecondaryColor,
+          //   ),
+          // ),
         ],
       ),
     );
@@ -97,7 +116,13 @@ class _BodyState extends State<Body> {
 class PartnerTile extends StatelessWidget {
   const PartnerTile({
     Key? key,
+    required this.firstName,
+    required this.lastName,
+    required this.roomNo,
   }) : super(key: key);
+  final String firstName;
+  final String lastName;
+  final String roomNo;
 
   @override
   Widget build(BuildContext context) {
@@ -135,14 +160,14 @@ class PartnerTile extends StatelessWidget {
                 left: getProportionateScreenWidth(102),
                 child: RichText(
                   text: TextSpan(
-                    text: 'George Ajayi,\n',
+                    text: '$firstName $lastName,\n',
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontSize: getProportionateScreenWidth(18),
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'H304',
+                        text: roomNo,
                         style: TextStyle(
                           color: kPrimaryColor,
                           fontSize: getProportionateScreenWidth(16),

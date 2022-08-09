@@ -88,6 +88,7 @@ class _BodyState extends State<Body> {
             ),
           ),
           ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: partners.length,
             itemBuilder: (BuildContext context, int index) {

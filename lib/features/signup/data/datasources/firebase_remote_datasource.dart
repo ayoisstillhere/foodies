@@ -24,8 +24,6 @@ abstract class FirebaseRemoteDataSource {
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _userCollection = FirebaseFirestore.instance.collection("users");
-  final _partnerCollection = FirebaseFirestore.instance.collection("partners");
-  final _clientCollection = FirebaseFirestore.instance.collection("clients");
 
   @override
   Future<String> getCurrentUid() async => _auth.currentUser!.uid;
@@ -70,16 +68,6 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
           roomNo: roomNo,
         ).toDocument();
         _userCollection.doc(_auth.currentUser!.uid).set(newUser);
-        if (userClass == "Partner") {
-          _partnerCollection.doc("allPartners").update({
-            'Partners': FieldValue.arrayUnion([_auth.currentUser!.uid]),
-          });
-        }
-        if (userClass == "Client") {
-          _clientCollection.doc("allClients").update({
-            'Clients': FieldValue.arrayUnion([_auth.currentUser!.uid]),
-          });
-        }
         return;
       }
     });

@@ -1,17 +1,17 @@
-import 'features/home_client/presentation/bloc/user_bloc/user_cubit.dart';
-import 'features/signup/domain/usecases/get_users_usecase.dart';
+import 'package:get_it/get_it.dart';
 
+import 'features/home/presentation/bloc/user_bloc/user_cubit.dart';
 import 'features/login/presentation/login_cubit/login_cubit.dart';
 import 'features/signup/data/datasources/firebase_remote_datasource.dart';
 import 'features/signup/data/repositories/firebase_repository_impl.dart';
 import 'features/signup/domain/repositories/firebase_repository.dart';
 import 'features/signup/domain/usecases/create_current_user_usecase.dart';
 import 'features/signup/domain/usecases/get_current_uid_usecase.dart';
+import 'features/signup/domain/usecases/get_users_usecase.dart';
 import 'features/signup/domain/usecases/is_login_usecase.dart';
 import 'features/signup/domain/usecases/login_usecase.dart';
 import 'features/signup/domain/usecases/signup_usecase.dart';
 import 'features/signup/presentation/auth_bloc/auth_cubit.dart';
-import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
 

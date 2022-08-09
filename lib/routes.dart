@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/home_client/presentation/pages/home_client_screen.dart';
+import 'features/home/presentation/pages/home_screen.dart';
 import 'features/login/presentation/pages/login_screen.dart';
 import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'features/signup/presentation/auth_bloc/auth_cubit.dart';
@@ -14,9 +14,9 @@ final Map<String, WidgetBuilder> routes = {
   "/": (context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, authState) {
-      SizeConfig().init(context);
+        SizeConfig().init(context);
         if (authState is Authenticated) {
-          return HomeClientScreen(uid: authState.uid);
+          return HomeScreen(uid: authState.uid);
         }
         if (authState is UnAuthenticated) {
           return const OnboardingScreen();

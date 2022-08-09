@@ -4,10 +4,10 @@ import 'package:foodies/size_config.dart';
 
 import '../widgets/body.dart';
 
-class HomeClientScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   static String routeName = "/home_client";
   final String uid;
-  const HomeClientScreen({Key? key, required this.uid}) : super(key: key);
+  const HomeScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

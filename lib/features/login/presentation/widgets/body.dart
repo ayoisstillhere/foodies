@@ -8,7 +8,7 @@ import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-import '../../../home_client/presentation/pages/home_client_screen.dart';
+import '../../../home/presentation/pages/home_screen.dart';
 import '../../../signup/presentation/pages/signup_screen.dart';
 import '../login_cubit/login_cubit.dart';
 
@@ -64,8 +64,8 @@ class _BodyState extends State<Body> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (_) => HomeClientScreen(
-                      uid: FirebaseAuth.instance.currentUser!.uid)));
+                  builder: (_) =>
+                      HomeScreen(uid: FirebaseAuth.instance.currentUser!.uid)));
         }
         if (state is LoginFailure) {
           addError(error: "Invalid Login");

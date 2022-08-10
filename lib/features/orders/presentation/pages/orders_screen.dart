@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/components/bottom_nav_bar.dart';
 
+import '../widgets/body.dart';
+
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({
     Key? key,
@@ -14,6 +16,7 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Orders"),
       ),
+      body: Body(uid: uid),
       bottomNavigationBar: BottomNavBar(selected: 1, uid: uid),
     );
   }

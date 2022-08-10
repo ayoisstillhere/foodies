@@ -35,18 +35,17 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
     return BlocBuilder<UserCubit, UserState>(
       builder: (_, state) {
         if (state is UserLoaded) {
-          return homeBody(auth, state);
+          return homeBody(state);
         }
         return const Center(child: CircularProgressIndicator());
       },
     );
   }
 
-  Widget homeBody(FirebaseAuth auth, UserLoaded users) {
+  Widget homeBody(UserLoaded users) {
     final user = users.users.firstWhere(
       (user) => user.uid == widget.uid,
       orElse: () => const UserModel(
@@ -121,16 +120,6 @@ class ClientBody extends StatelessWidget {
               );
             },
           ),
-          Center(
-            child: DefaultButton(
-              text: "SignOut",
-              press: () {
-                auth.signOut();
-                Navigator.pushNamed(context, OnboardingScreen.routeName);
-              },
-              color: kSecondaryColor,
-            ),
-          ),
         ],
       ),
     );
@@ -147,6 +136,7 @@ class PartnerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
@@ -160,16 +150,6 @@ class PartnerBody extends StatelessWidget {
               subTitle: "Tap Orders for Details",
             ),
           ),
-          // Center(
-          //   child: DefaultButton(
-          //     text: "SignOut",
-          //     press: () {
-          //       auth.signOut();
-          //       Navigator.pushNamed(context, OnboardingScreen.routeName);
-          //     },
-          //     color: kSecondaryColor,
-          //   ),
-          // ),
         ],
       ),
     );

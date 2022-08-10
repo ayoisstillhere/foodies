@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/size_config.dart';
 
+import '../../../../components/bottom_nav_bar.dart';
 import '../widgets/body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,19 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Body(uid: uid),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(31),
-        ).copyWith(bottom: getProportionateScreenHeight(33)),
-        child: Container(
-          height: getProportionateScreenHeight(71),
-          width: getProportionateScreenWidth(328),
-          decoration: BoxDecoration(
-            color: kPrimaryColor,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-        ),
-      ),
+      bottomNavigationBar: BottomNavBar(selected: 0, uid: uid),
     );
   }
 }

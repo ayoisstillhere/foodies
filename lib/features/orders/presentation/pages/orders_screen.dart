@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/components/bottom_nav_bar.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({
@@ -13,6 +14,7 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Orders"),
       ),
+      bottomNavigationBar: BottomNavBar(selected: 1, uid: uid),
     );
   }
 }

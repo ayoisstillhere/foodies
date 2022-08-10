@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/components/bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -13,6 +14,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Profile"),
       ),
+      bottomNavigationBar: BottomNavBar(selected: 2, uid: uid),
     );
   }
 }

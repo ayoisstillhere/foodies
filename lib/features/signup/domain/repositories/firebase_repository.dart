@@ -16,4 +16,15 @@ abstract class FirebaseRepository {
     String roomNo,
   );
   Stream<List<UserEntity>> getUsers();
+  Future<void> placeOrder(
+    String uid,
+    String name,
+    String room,
+    String food,
+    String location,
+    String amount,
+    String details,
+    String status,
+    String partnerAssigned,
+  );
 }

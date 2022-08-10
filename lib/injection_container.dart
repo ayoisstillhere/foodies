@@ -1,3 +1,4 @@
+import 'package:foodies/features/add_order/domain/usecases/place_order_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/home/presentation/bloc/user_bloc/user_cubit.dart';
@@ -38,6 +39,8 @@ Future<void> init() async {
       () => SignupUseCase(repository: sl.call()));
   sl.registerLazySingleton<GetUsersUsecase>(
       () => GetUsersUsecase(repository: sl.call()));
+  sl.registerLazySingleton<PlaceOrderUseCase>(
+      () => PlaceOrderUseCase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

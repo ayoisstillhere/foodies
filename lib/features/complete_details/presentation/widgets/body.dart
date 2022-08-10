@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../components/default_button.dart';
-import '../../../../components/form_error.dart';
-import '../../../choose_option/presentation/pages/choose_option_screen.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
+import '../../../../components/default_button.dart';
+import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../choose_option/presentation/pages/choose_option_screen.dart';
 
 class Body extends StatefulWidget {
   const Body(

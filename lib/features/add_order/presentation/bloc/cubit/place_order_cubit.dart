@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:foodies/features/add_order/domain/usecases/place_order_usecase.dart';
+import '../../../domain/usecases/place_order_usecase.dart';
 
 part 'place_order_state.dart';
 

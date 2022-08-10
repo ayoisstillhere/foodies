@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodies/components/bottom_nav_bar.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/features/add_order/presentation/pages/add_order.dart';
-import 'package:foodies/features/orders/presentation/widgets/partner_body.dart';
+import '../../../../components/bottom_nav_bar.dart';
+import '../../../../constants.dart';
+import '../../../add_order/presentation/pages/add_order.dart';
+import '../widgets/partner_body.dart';
 
 import '../../../home/presentation/bloc/user_bloc/user_cubit.dart';
 import '../../../signup/data/models/user_model.dart';

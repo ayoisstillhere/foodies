@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:foodies/components/default_button.dart';
-import 'package:foodies/components/form_error.dart';
-import 'package:foodies/components/form_header.dart';
-import 'package:foodies/features/add_order/presentation/bloc/cubit/place_order_cubit.dart';
+import '../../../../components/default_button.dart';
+import '../../../../components/form_error.dart';
+import '../../../../components/form_header.dart';
+import '../bloc/cubit/place_order_cubit.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../constants.dart';

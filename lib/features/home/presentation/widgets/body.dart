@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodies/components/form_header.dart';
+import '../../../../components/form_header.dart';
 
-import 'package:foodies/features/signup/domain/entities/user_entity.dart';
+import '../../../signup/domain/entities/user_entity.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/home_header.dart';

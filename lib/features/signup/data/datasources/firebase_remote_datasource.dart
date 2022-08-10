@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodies/features/add_order/data/models/order_model.dart';
+import '../../../add_order/data/models/order_model.dart';
 
 import '../models/user_model.dart';
 

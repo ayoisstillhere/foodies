@@ -33,7 +33,7 @@ class FormError extends StatelessWidget {
         ),
         Text(
           error,
-          style: TextStyle(
+          style: const TextStyle(
             color: kSecondaryColor,
           ),
         ),

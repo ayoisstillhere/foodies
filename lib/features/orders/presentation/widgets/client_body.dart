@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/components/form_header.dart';
 
-class Body extends StatelessWidget {
-  const Body({
+class ClientBody extends StatelessWidget {
+  const ClientBody({
     Key? key,
     required this.uid,
   }) : super(key: key);

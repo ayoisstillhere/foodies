@@ -49,4 +49,10 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Stream<List<UserEntity>> getUsers() {
     return firebaseRemoteDataSource.getUsers();
   }
+  
+  @override
+  Future<void> placeOrder(String uid, String name, String room, String food, String location, String amount, String details, String status, String partnerAssigned) {
+    // TODO: implement placeOrder
+    throw UnimplementedError();
+  }
 }

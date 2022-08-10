@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodies/components/default_button.dart';
+import 'package:foodies/components/form_error.dart';
 import 'package:foodies/components/form_header.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
@@ -77,9 +78,18 @@ class _BodyState extends State<Body> {
             const Spacer(),
             buildDetailsFormField(),
             const Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(31)),
+              child: FormError(errors: errors),
+            ),
             DefaultButton(
               text: "Place Order",
-              press: () {},
+              press: () {
+                if (_addOrderFormKey.currentState!.validate()) {
+                  _addOrderFormKey.currentState!.save();
+                }
+              },
               color: kSecondaryColor,
             ),
             const Spacer(flex: 3),

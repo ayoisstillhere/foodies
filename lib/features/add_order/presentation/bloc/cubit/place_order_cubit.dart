@@ -10,8 +10,8 @@ part 'place_order_state.dart';
 class PlaceOrderCubit extends Cubit<PlaceOrderState> {
   final PlaceOrderUseCase placeOrderUseCase;
 
-  PlaceOrderCubit(
-    this.placeOrderUseCase,
+  PlaceOrderCubit({
+    required this.placeOrderUseCase,}
   ) : super(PlaceOrderInitial());
 
   Future<void> placeOrder({

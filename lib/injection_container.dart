@@ -1,4 +1,5 @@
 import 'package:foodies/features/add_order/domain/usecases/place_order_usecase.dart';
+import 'package:foodies/features/add_order/presentation/bloc/cubit/place_order_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/home/presentation/bloc/user_bloc/user_cubit.dart';
@@ -25,6 +26,8 @@ Future<void> init() async {
       loginUseCase: sl.call(),
       createCurrentUserUsecase: sl.call()));
   sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
+  sl.registerFactory<PlaceOrderCubit>(
+      () => PlaceOrderCubit(placeOrderUseCase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsLoginUseCase>(

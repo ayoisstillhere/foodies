@@ -17,3 +17,6 @@ const String kFirstNameNullError = "Please Enter your first name";
 const String kLastNameNullError = "Please Enter your last name";
 const String kRoomNoNullError = "Please Enter your Room Number";
 const String kChooseOptionError = "Please Select an Option";
+const String kLocationNullError = "Please Enter your Location";
+const String kFoodNullError = "Please Enter the name of your meal";
+const String kAmountNullError = "Please Enter the price for your meal";

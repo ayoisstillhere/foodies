@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodies/components/bottom_nav_bar.dart';
 import 'package:foodies/constants.dart';
+import 'package:foodies/features/add_order/presentation/pages/add_order.dart';
 import 'package:foodies/features/orders/presentation/widgets/partner_body.dart';
 
 import '../../../home/presentation/bloc/user_bloc/user_cubit.dart';
@@ -62,7 +63,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
           : PartnerBody(uid: widget.uid),
       bottomNavigationBar: BottomNavBar(selected: 1, uid: widget.uid),
       floatingActionButton: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => AddOrder()));
+        },
         child: user.userClass == "Client"
             ? SvgPicture.asset(
                 "assets/icons/floating_action_icon.svg",

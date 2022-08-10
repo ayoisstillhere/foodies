@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodies/features/add_order/data/models/order_model.dart';
 
 import '../models/user_model.dart';
 
@@ -19,11 +20,23 @@ abstract class FirebaseRemoteDataSource {
     String roomNo,
   );
   Stream<List<UserModel>> getUsers();
+  Future<void> placeOrder(
+    String uid,
+    String name,
+    String room,
+    String food,
+    String location,
+    String amount,
+    String details,
+    String status,
+    String partnerAssigned,
+  );
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _userCollection = FirebaseFirestore.instance.collection("users");
+  final _orderCollection = FirebaseFirestore.instance.collection("orders");
 
   @override
   Future<String> getCurrentUid() async => _auth.currentUser!.uid;
@@ -78,5 +91,31 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     return _userCollection.snapshots().map((querySnapshot) => querySnapshot.docs
         .map((docSnapshot) => UserModel.fromSnapshot(docSnapshot))
         .toList());
+  }
+
+  @override
+  Future<void> placeOrder(
+      String uid,
+      String name,
+      String room,
+      String food,
+      String location,
+      String amount,
+      String details,
+      String status,
+      String partnerAssigned) async {
+    final newOrder = OrderModel(
+      uid: uid,
+      name: name,
+      room: room,
+      food: food,
+      location: location,
+      amount: amount,
+      details: details,
+      status: status,
+      partnerAssigned: partnerAssigned,
+    ).toDocument();
+    _orderCollection.doc().set(newOrder);
+    return;
   }
 }

@@ -74,6 +74,7 @@ class _BodyState extends State<Body> {
       listener: (context, state) {
         if (state is PlaceOrderSuccess) {
           // Go back to orders screen
+          Navigator.pop(context);
         }
         if (state is PlaceOrderFailure) {
           addError(error: "Error placing Order, please try again!");

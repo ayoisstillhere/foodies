@@ -65,7 +65,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
       floatingActionButton: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => AddOrder()));
+              context, MaterialPageRoute(builder: (_) => AddOrder(uid: user.uid, name: "${user.firstName} ${user.lastName}", room: user.roomNo)));
         },
         child: user.userClass == "Client"
             ? SvgPicture.asset(

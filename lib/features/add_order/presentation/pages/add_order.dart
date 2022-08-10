@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import '../widgets/body.dart';
 
 class AddOrder extends StatelessWidget {
-  const AddOrder({Key? key}) : super(key: key);
+  const AddOrder({
+    Key? key,
+    required this.uid,
+    required this.name,
+    required this.room,
+  }) : super(key: key);
+  final String uid;
+  final String name;
+  final String room;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,7 @@ class AddOrder extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Add Order"),
       ),
-      body: Body(),
+      body: Body(uid: uid, name: name, room: room),
     );
   }
 }

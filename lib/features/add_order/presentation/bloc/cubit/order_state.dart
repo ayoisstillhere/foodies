@@ -9,6 +9,14 @@ class OrderInitial extends OrderState {
   List<Object> get props => [];
 }
 
+class OrderLoaded extends OrderState {
+  final List<OrderEntity> orders;
+
+  const OrderLoaded({required this.orders});
+  @override
+  List<Object?> get props => [orders];
+}
+
 class OrderLoading extends OrderState {
   @override
   List<Object?> get props => [];

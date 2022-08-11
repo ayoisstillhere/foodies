@@ -71,7 +71,6 @@ class PartnerTile extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: getProportionateScreenHeight(35)),
       ],
     );
   }

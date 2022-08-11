@@ -113,10 +113,15 @@ class ClientBody extends StatelessWidget {
             shrinkWrap: true,
             itemCount: partners.length,
             itemBuilder: (BuildContext context, int index) {
-              return PartnerTile(
-                firstName: partners[index].firstName,
-                lastName: partners[index].lastName,
-                roomNo: partners[index].roomNo,
+              return Column(
+                children: [
+                  PartnerTile(
+                    firstName: partners[index].firstName,
+                    lastName: partners[index].lastName,
+                    roomNo: partners[index].roomNo,
+                  ),
+                  SizedBox(height: getProportionateScreenHeight(35)),
+                ],
               );
             },
           ),

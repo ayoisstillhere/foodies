@@ -31,6 +31,7 @@ abstract class FirebaseRemoteDataSource {
     String status,
     String partnerAssigned,
   );
+  Stream<List<OrderModel>> getOrders();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {

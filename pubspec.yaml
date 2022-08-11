@@ -87,6 +87,8 @@ flutter:
     - assets/icons/details_icon.svg
     - assets/icons/food_icon.svg
     - assets/icons/location_icon.svg
+    - assets/images/food_icon1.svg
+    - assets/images/food_icon2.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

@@ -1,3 +1,5 @@
+import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
+
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/firebase_repository.dart';
 import '../datasources/firebase_remote_datasource.dart';
@@ -71,5 +73,10 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
       status,
       partnerAssigned,
     );
+  }
+
+  @override
+  Stream<List<OrderEntity>> getOrders() {
+    return firebaseRemoteDataSource.getOrders();
   }
 }

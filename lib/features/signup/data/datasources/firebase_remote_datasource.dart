@@ -119,4 +119,10 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     _orderCollection.doc().set(newOrder);
     return;
   }
+  
+  @override
+  Stream<List<OrderModel>> getOrders() {
+    // TODO: implement getOrders
+    throw UnimplementedError();
+  }
 }

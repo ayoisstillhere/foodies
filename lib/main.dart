@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'features/add_order/presentation/bloc/cubit/place_order_cubit.dart';
+import 'features/add_order/presentation/bloc/cubit/order_cubit.dart';
 import 'features/home/presentation/bloc/user_bloc/user_cubit.dart';
 import 'features/login/presentation/login_cubit/login_cubit.dart';
 import 'features/signup/presentation/auth_bloc/auth_cubit.dart';
@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<UserCubit>(
           create: (_) => di.sl<UserCubit>(),
         ),
-        BlocProvider<PlaceOrderCubit>(
-          create: (_) => di.sl<PlaceOrderCubit>(),
+        BlocProvider<OrderCubit>(
+          create: (_) => di.sl<OrderCubit>(),
         ),
       ],
       child: MaterialApp(

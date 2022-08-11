@@ -5,14 +5,14 @@ import 'package:equatable/equatable.dart';
 
 import '../../../domain/usecases/place_order_usecase.dart';
 
-part 'place_order_state.dart';
+part 'order_state.dart';
 
-class PlaceOrderCubit extends Cubit<PlaceOrderState> {
+class OrderCubit extends Cubit<OrderState> {
   final PlaceOrderUseCase placeOrderUseCase;
 
-  PlaceOrderCubit({
-    required this.placeOrderUseCase,}
-  ) : super(PlaceOrderInitial());
+  OrderCubit({
+    required this.placeOrderUseCase,
+  }) : super(OrderInitial());
 
   Future<void> placeOrder({
     required String uid,
@@ -25,7 +25,7 @@ class PlaceOrderCubit extends Cubit<PlaceOrderState> {
     required String status,
     required String partnerAssigned,
   }) async {
-    emit(PlaceOrderLoading());
+    emit(OrderLoading());
     try {
       await placeOrderUseCase.call(
         uid,
@@ -38,11 +38,11 @@ class PlaceOrderCubit extends Cubit<PlaceOrderState> {
         status,
         partnerAssigned,
       );
-      emit(PlaceOrderSuccess());
+      emit(OrderSuccess());
     } on SocketException catch (e) {
-      emit(PlaceOrderFailure(e.message));
+      emit(OrderFailure(e.message));
     } catch (_) {
-      emit(PlaceOrderFailure("Firebase Exception"));
+      emit(OrderFailure("Firebase Exception"));
     }
   }
 }

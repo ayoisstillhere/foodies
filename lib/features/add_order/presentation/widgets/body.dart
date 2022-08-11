@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../components/default_button.dart';
 import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
-import '../bloc/cubit/place_order_cubit.dart';
+import '../bloc/cubit/order_cubit.dart';
 
 import '../../../../components/custom_suffix_icon.dart';
 import '../../../../constants.dart';
@@ -70,18 +70,18 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PlaceOrderCubit, PlaceOrderState>(
+    return BlocConsumer<OrderCubit, OrderState>(
       listener: (context, state) {
-        if (state is PlaceOrderSuccess) {
+        if (state is OrderSuccess) {
           // Go back to orders screen
           Navigator.pop(context);
         }
-        if (state is PlaceOrderFailure) {
+        if (state is OrderFailure) {
           addError(error: "Error placing Order, please try again!");
         }
       },
       builder: (context, state) {
-        if (state is PlaceOrderLoading) {
+        if (state is OrderLoading) {
           return const Center(child: CircularProgressIndicator());
         }
         return buildAddOrderForm();
@@ -119,7 +119,7 @@ class _BodyState extends State<Body> {
               press: () async {
                 if (_addOrderFormKey.currentState!.validate()) {
                   _addOrderFormKey.currentState!.save();
-                  await BlocProvider.of<PlaceOrderCubit>(context).placeOrder(
+                  await BlocProvider.of<OrderCubit>(context).placeOrder(
                     uid: widget.uid,
                     name: widget.name,
                     room: widget.room,

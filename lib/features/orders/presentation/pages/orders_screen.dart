@@ -62,17 +62,17 @@ class _OrdersScreenState extends State<OrdersScreen> {
           ? ClientBody(uid: widget.uid)
           : PartnerBody(uid: widget.uid),
       bottomNavigationBar: BottomNavBar(selected: 1, uid: widget.uid),
-      floatingActionButton: GestureDetector(
-        onTap: () {
-          Navigator.push(
+      floatingActionButton: user.userClass == "Client"
+          ? GestureDetector(
+            onTap: () {
+              Navigator.push(
               context, MaterialPageRoute(builder: (_) => AddOrder(uid: user.uid, name: "${user.firstName} ${user.lastName}", room: user.roomNo)));
-        },
-        child: user.userClass == "Client"
-            ? SvgPicture.asset(
+            },
+            child: SvgPicture.asset(
                 "assets/icons/floating_action_icon.svg",
-              )
-            : null,
-      ),
+              ),
+          )
+          : null,
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
+
 import '../entities/user_entity.dart';
 
 abstract class FirebaseRepository {
@@ -27,4 +29,5 @@ abstract class FirebaseRepository {
     String status,
     String partnerAssigned,
   );
+  Stream<List<OrderEntity>> getOrders();
 }

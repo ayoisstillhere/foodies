@@ -28,8 +28,8 @@ Future<void> init() async {
       loginUseCase: sl.call(),
       createCurrentUserUsecase: sl.call()));
   sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
-  sl.registerFactory<OrderCubit>(
-      () => OrderCubit(placeOrderUseCase: sl.call()));
+  sl.registerFactory<OrderCubit>(() =>
+      OrderCubit(placeOrderUseCase: sl.call(), getOrdersUseCase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsLoginUseCase>(

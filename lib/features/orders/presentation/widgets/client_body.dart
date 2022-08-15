@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
 import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
+import 'package:foodies/features/details/presentation/pages/details_screen.dart';
 
 import '../../../../components/form_header.dart';
 import '../../../../size_config.dart';
@@ -66,11 +67,16 @@ class _ClientBodyState extends State<ClientBody> {
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
-                      FoodTile(
-                        food: yourOrders[index].food,
-                        location: yourOrders[index].location,
-                        ammount: yourOrders[index].amount,
-                        index: index,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (_)=> DetailsScreen(order: yourOrders[index])));
+                        },
+                        child: FoodTile(
+                          food: yourOrders[index].food,
+                          location: yourOrders[index].location,
+                          ammount: yourOrders[index].amount,
+                          index: index,
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(45)),
                     ],

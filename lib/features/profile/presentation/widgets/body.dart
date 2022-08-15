@@ -1,10 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/features/home/presentation/bloc/user_bloc/user_cubit.dart';
 import 'package:foodies/size_config.dart';
 
+import '../../../choose_option/presentation/widgets/option_card.dart';
 import '../../../signup/data/models/user_model.dart';
 
 class Body extends StatefulWidget {
@@ -19,6 +22,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool isSelected = false;
   @override
   void initState() {
     BlocProvider.of<UserCubit>(context).getUsers();
@@ -58,6 +62,7 @@ class _BodyState extends State<Body> {
             title: "Your Profile",
             subTitle: "You can switch to be a partner from here.",
           ),
+          Spacer(flex: 2),
           Text(
             "${user.firstName} ${user.lastName}",
             style: TextStyle(
@@ -65,6 +70,7 @@ class _BodyState extends State<Body> {
               fontSize: getProportionateScreenWidth(25),
             ),
           ),
+          Spacer(),
           Text(
             user.roomNo,
             style: TextStyle(
@@ -72,6 +78,49 @@ class _BodyState extends State<Body> {
               fontSize: getProportionateScreenWidth(18),
             ),
           ),
+          Spacer(flex: 2),
+          user.userClass == 'Client'
+              ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isSelected = !isSelected;
+                    });
+                  },
+                  child: OptionCard(
+                    option: 'Partner',
+                    img: 'assets/images/choose_option_partner.svg',
+                    description: 'Help your floormates get food!',
+                    positions: const [34, 46, 119, 34, 148, 15, 117],
+                    isSelected: isSelected,
+                  ),
+                )
+              : GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isSelected = !isSelected;
+                    });
+                  },
+                  child: OptionCard(
+                    img: 'assets/images/choose_option_client.svg',
+                    option: 'Client',
+                    description: 'Post orders for floormates to help!',
+                    positions: const [50, 35, 119, 43, 148, 5, 135],
+                    isSelected: isSelected,
+                  ),
+                ),
+          Spacer(flex: 2),
+          DefaultButton(
+            text: "Switch to Partner",
+            press: () {},
+            color: Colors.white,
+          ),
+          Spacer(flex: 2),
+          DefaultButton(
+            text: "Sign Out",
+            press: () {},
+            color: kSecondaryColor,
+          ),
+          Spacer(flex: 3),
         ],
       ),
     );

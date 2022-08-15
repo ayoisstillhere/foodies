@@ -35,7 +35,7 @@ class DetailsScreen extends StatelessWidget {
           const Spacer(),
           buildRow("Location", order.location),
           const Spacer(),
-          buildRow("Amount", order.amount),
+          buildRow("Amount", "#${order.amount}"),
           const Spacer(),
           buildDetailsRow(),
           const Spacer(),

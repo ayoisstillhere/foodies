@@ -62,7 +62,7 @@ class _BodyState extends State<Body> {
             title: "Your Profile",
             subTitle: "You can switch to be a partner from here.",
           ),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           Text(
             "${user.firstName} ${user.lastName}",
             style: TextStyle(
@@ -70,7 +70,7 @@ class _BodyState extends State<Body> {
               fontSize: getProportionateScreenWidth(25),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             user.roomNo,
             style: TextStyle(
@@ -78,7 +78,7 @@ class _BodyState extends State<Body> {
               fontSize: getProportionateScreenWidth(18),
             ),
           ),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           user.userClass == 'Client'
               ? GestureDetector(
                   onTap: () {
@@ -108,19 +108,23 @@ class _BodyState extends State<Body> {
                     isSelected: isSelected,
                   ),
                 ),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           DefaultButton(
-            text: "Switch to Partner",
-            press: () {},
+            text: user.userClass == "Client"
+                ? "Switch to Partner"
+                : "Switch to Client",
+            press: () {
+              // TODO: implement switch class
+            },
             color: Colors.white,
           ),
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           DefaultButton(
             text: "Sign Out",
             press: () {},
             color: kSecondaryColor,
           ),
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
         ],
       ),
     );

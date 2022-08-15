@@ -3,13 +3,18 @@ import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/size_config.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({
     Key? key,
     required this.uid,
   }) : super(key: key);
   final String uid;
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Center(

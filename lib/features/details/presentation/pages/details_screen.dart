@@ -126,4 +126,14 @@ class DetailsScreen extends StatelessWidget {
       ),
     );
   }
+
+  void buttonAction () {
+    if (btnAction == 'Delete') {
+      //TODO: Delete method 
+    }else if (btnAction == 'Select') {
+      //TODO: Select method
+    }else if (btnAction == 'Unselect') {
+      //TODO: Unselect method
+    }
+  }
 }

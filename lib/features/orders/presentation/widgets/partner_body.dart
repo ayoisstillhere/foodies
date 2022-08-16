@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
 
 import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
+import 'package:foodies/features/orders/presentation/widgets/partner_food_tile.dart';
 
 import '../../../../components/form_header.dart';
 import '../../../../size_config.dart';
@@ -79,7 +80,9 @@ class _PartnerBodyState extends State<PartnerBody> {
                                   builder: (_) => DetailsScreen(
                                       order: availableOrders[index])));
                         },
-                        child: FoodTile(
+                        child: PartnerFoodTile(
+                          name: availableOrders[index].name,
+                          roomNo: availableOrders[index].room,
                           food: availableOrders[index].food,
                           location: availableOrders[index].location,
                           ammount: availableOrders[index].amount,

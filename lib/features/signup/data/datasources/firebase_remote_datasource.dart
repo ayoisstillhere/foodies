@@ -32,6 +32,7 @@ abstract class FirebaseRemoteDataSource {
     String partnerAssigned,
   );
   Stream<List<OrderModel>> getOrders();
+  Future<void> signOut();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
@@ -126,5 +127,10 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         .docs
         .map((docSnapshot) => OrderModel.fromSnapshot(docSnapshot))
         .toList());
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:uuid/uuid.dart';
 import '../../../add_order/data/models/order_model.dart';
 
 import '../models/user_model.dart';
@@ -106,6 +107,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
       String details,
       String status,
       String partnerAssigned) async {
+    String orderId = const Uuid().v1();
     final newOrder = OrderModel(
       uid: uid,
       name: name,
@@ -116,8 +118,9 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
       details: details,
       status: status,
       partnerAssigned: partnerAssigned,
+      orderId: orderId,
     ).toDocument();
-    _orderCollection.doc().set(newOrder);
+    _orderCollection.doc(orderId).set(newOrder);
     return;
   }
 

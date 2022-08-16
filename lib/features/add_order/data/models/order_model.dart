@@ -13,6 +13,7 @@ class OrderModel extends OrderEntity {
     required String details,
     required String status,
     required String partnerAssigned,
+    required String orderId,
   }) : super(
           uid,
           name,
@@ -23,6 +24,7 @@ class OrderModel extends OrderEntity {
           details,
           status,
           partnerAssigned,
+          orderId,
         );
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
@@ -36,6 +38,7 @@ class OrderModel extends OrderEntity {
       details: json["details"],
       status: json["status"],
       partnerAssigned: json["partnerAssigned"],
+      orderId: json["orderId"],
     );
   }
 
@@ -50,6 +53,7 @@ class OrderModel extends OrderEntity {
       details: (documentSnapshot.data()! as dynamic)['details'],
       status: (documentSnapshot.data()! as dynamic)['status'],
       partnerAssigned: (documentSnapshot.data()! as dynamic)['partnerAssigned'],
+      orderId: (documentSnapshot.data()! as dynamic)['orderId'],
     );
   }
 
@@ -64,6 +68,7 @@ class OrderModel extends OrderEntity {
       "details": details,
       "status": status,
       "partnerAssigned": partnerAssigned,
+      "orderId":orderId,
     };
   }
 }

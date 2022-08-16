@@ -10,9 +10,32 @@ class OrderEntity extends Equatable {
   final String details;
   final String status;
   final String partnerAssigned;
+  final String orderId;
 
-  const OrderEntity(this.uid, this.name, this.room, this.food, this.location, this.amount, this.details, this.status, this.partnerAssigned);
+  const OrderEntity(
+    this.uid,
+    this.name,
+    this.room,
+    this.food,
+    this.location,
+    this.amount,
+    this.details,
+    this.status,
+    this.partnerAssigned,
+    this.orderId,
+  );
 
   @override
-  List<Object?> get props => [uid, name, room, food, location, amount, details, status, partnerAssigned];
+  List<Object?> get props => [
+        uid,
+        name,
+        room,
+        food,
+        location,
+        amount,
+        details,
+        status,
+        partnerAssigned,
+        orderId,
+      ];
 }

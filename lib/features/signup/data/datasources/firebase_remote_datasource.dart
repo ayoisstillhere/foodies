@@ -34,6 +34,9 @@ abstract class FirebaseRemoteDataSource {
   );
   Stream<List<OrderModel>> getOrders();
   Future<void> signOut();
+  Future<void> deleteOrder(String orderId);
+  Future<void> selectOrder(String orderId, String partnerId);
+  Future<void> unselectOrder(String orderId);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
@@ -135,5 +138,30 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   @override
   Future<void> signOut() async {
     await _auth.signOut();
+  }
+
+  @override
+  Future<void> deleteOrder(String orderId) async {
+    await _orderCollection.doc(orderId).delete();
+  }
+
+  @override
+  Future<void> selectOrder(String orderId, String partnerId) async {
+    await _orderCollection.doc(orderId).update({
+      'partnerAssigned': partnerId,
+    });
+    await _orderCollection.doc(orderId).update({
+      'status': 'Selected',
+    });
+  }
+
+  @override
+  Future<void> unselectOrder(String orderId) async {
+    await _orderCollection.doc(orderId).update({
+      'partnerAssigned': "",
+    });
+    await _orderCollection.doc(orderId).update({
+      'status': 'Unselected',
+    });
   }
 }

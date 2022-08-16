@@ -1,8 +1,8 @@
 import 'package:foodies/features/signup/domain/repositories/firebase_repository.dart';
 
-class DeleteOrderUseCae {
+class DeleteOrderUseCase {
   final FirebaseRepository repository;
-  DeleteOrderUseCae({
+  DeleteOrderUseCase({
     required this.repository,
   });
 

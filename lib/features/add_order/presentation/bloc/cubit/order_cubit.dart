@@ -16,7 +16,7 @@ part 'order_state.dart';
 class OrderCubit extends Cubit<OrderState> {
   final PlaceOrderUseCase placeOrderUseCase;
   final GetOrdersUseCase getOrdersUseCase;
-  final DeleteOrderUseCae deleteOrderUseCae;
+  final DeleteOrderUseCase deleteOrderUseCae;
   final SelectOrderUseCase selectOrderUseCase;
   final UnselectOrderUseCase unselectOrderUseCase;
 

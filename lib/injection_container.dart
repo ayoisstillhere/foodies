@@ -1,3 +1,6 @@
+import 'package:foodies/features/details/domain/usecases/delete_order_usecase.dart';
+import 'package:foodies/features/details/domain/usecases/select_order_usecase.dart';
+import 'package:foodies/features/details/domain/usecases/unselect_order_usecase.dart';
 import 'package:foodies/features/orders/domain/usecases/get_orders_usecase.dart';
 import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
 
@@ -31,8 +34,13 @@ Future<void> init() async {
         signOutUseCase: sl.call(),
       ));
   sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
-  sl.registerFactory<OrderCubit>(() =>
-      OrderCubit(placeOrderUseCase: sl.call(), getOrdersUseCase: sl.call()));
+  sl.registerFactory<OrderCubit>(() => OrderCubit(
+        placeOrderUseCase: sl.call(),
+        getOrdersUseCase: sl.call(),
+        deleteOrderUseCae: sl.call(),
+        selectOrderUseCase: sl.call(),
+        unselectOrderUseCase: sl.call(),
+      ));
 
   //!useCae
   sl.registerLazySingleton<IsLoginUseCase>(
@@ -53,6 +61,12 @@ Future<void> init() async {
       () => GetOrdersUseCase(repository: sl.call()));
   sl.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(repository: sl.call()));
+  sl.registerLazySingleton<DeleteOrderUseCase>(
+      () => DeleteOrderUseCase(repository: sl.call()));
+  sl.registerLazySingleton<SelectOrderUseCase>(
+      () => SelectOrderUseCase(repository: sl.call()));
+  sl.registerLazySingleton<UnselectOrderUseCase>(
+      () => UnselectOrderUseCase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

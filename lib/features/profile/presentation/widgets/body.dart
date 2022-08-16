@@ -5,6 +5,10 @@ import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/features/home/presentation/bloc/user_bloc/user_cubit.dart';
+import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
+import 'package:foodies/features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:foodies/features/profile/presentation/pages/profile_screen.dart';
+import 'package:foodies/features/signup/presentation/auth_bloc/auth_cubit.dart';
 import 'package:foodies/size_config.dart';
 
 import '../../../choose_option/presentation/widgets/option_card.dart';
@@ -121,7 +125,11 @@ class _BodyState extends State<Body> {
           const Spacer(flex: 2),
           DefaultButton(
             text: "Sign Out",
-            press: () {},
+            press: () {
+              BlocProvider.of<AuthCubit>(context).loggedOut();
+              BlocProvider.of<LoginCubit>(context).submitSignOut();
+              Navigator.pushNamed(context, OnboardingScreen.routeName);
+            },
             color: kSecondaryColor,
           ),
           const Spacer(flex: 3),

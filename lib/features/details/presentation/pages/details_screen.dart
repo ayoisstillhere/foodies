@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
+import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
 import 'package:foodies/size_config.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -11,9 +13,11 @@ class DetailsScreen extends StatelessWidget {
     Key? key,
     required this.order,
     required this.btnAction,
+    required this.uid,
   }) : super(key: key);
   final OrderEntity order;
   final String btnAction;
+  final String uid;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,20 @@ class DetailsScreen extends StatelessWidget {
           const Spacer(),
           DefaultButton(
             text: "$btnAction Order",
-            press: () {},
+            press: () {
+              if (btnAction == 'Delete') {
+                BlocProvider.of<OrderCubit>(context).deleteOrer(order.orderId);
+              } else if (btnAction == 'Select') {
+                BlocProvider.of<OrderCubit>(context).selectOrder(
+                  order.orderId,
+                  uid,
+                );
+              } else if (btnAction == 'Unselect') {
+                BlocProvider.of<OrderCubit>(context)
+                    .unselectOrder(order.orderId);
+              }
+              Navigator.pop(context);
+            },
             color: kSecondaryColor,
           ),
           const Spacer(flex: 2),
@@ -125,15 +142,5 @@ class DetailsScreen extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void buttonAction () {
-    if (btnAction == 'Delete') {
-      //TODO: Delete method 
-    }else if (btnAction == 'Select') {
-      //TODO: Select method
-    }else if (btnAction == 'Unselect') {
-      //TODO: Unselect method
-    }
   }
 }

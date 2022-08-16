@@ -1,4 +1,5 @@
 import 'package:foodies/features/orders/domain/usecases/get_orders_usecase.dart';
+import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
 
 import 'features/add_order/domain/usecases/place_order_usecase.dart';
 import 'features/add_order/presentation/bloc/cubit/order_cubit.dart';
@@ -24,9 +25,11 @@ Future<void> init() async {
   sl.registerFactory<AuthCubit>(() =>
       AuthCubit(isLoginUseCase: sl.call(), getCurrentUidUseCase: sl.call()));
   sl.registerFactory<LoginCubit>(() => LoginCubit(
-      signupUseCase: sl.call(),
-      loginUseCase: sl.call(),
-      createCurrentUserUsecase: sl.call()));
+        signupUseCase: sl.call(),
+        loginUseCase: sl.call(),
+        createCurrentUserUsecase: sl.call(),
+        signOutUseCase: sl.call(),
+      ));
   sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
   sl.registerFactory<OrderCubit>(() =>
       OrderCubit(placeOrderUseCase: sl.call(), getOrdersUseCase: sl.call()));
@@ -48,6 +51,8 @@ Future<void> init() async {
       () => PlaceOrderUseCase(repository: sl.call()));
   sl.registerLazySingleton<GetOrdersUseCase>(
       () => GetOrdersUseCase(repository: sl.call()));
+  sl.registerLazySingleton<SignOutUseCase>(
+      () => SignOutUseCase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

@@ -75,7 +75,7 @@ class _ClientBodyState extends State<ClientBody> {
                               MaterialPageRoute(
                                   builder: (_) => DetailsScreen(
                                         order: yourOrders[index],
-                                        btnAction: 'delete',
+                                        btnAction: 'Delete',
                                       )));
                         },
                         child: FoodTile(

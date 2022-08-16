@@ -42,7 +42,7 @@ class DetailsScreen extends StatelessWidget {
           buildDetailsRow(),
           const Spacer(),
           DefaultButton(
-            text: "Delete Order",
+            text: "$btnAction Order",
             press: () {},
             color: kSecondaryColor,
           ),

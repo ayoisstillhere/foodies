@@ -79,7 +79,7 @@ class _PartnerBodyState extends State<PartnerBody> {
                               MaterialPageRoute(
                                   builder: (_) => DetailsScreen(
                                         order: availableOrders[index],
-                                        btnAction: 'select',
+                                        btnAction: 'Select',
                                       )));
                         },
                         child: PartnerFoodTile(

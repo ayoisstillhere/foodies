@@ -30,4 +30,5 @@ abstract class FirebaseRepository {
     String partnerAssigned,
   );
   Stream<List<OrderEntity>> getOrders();
+  Future<void> signOut();
 }

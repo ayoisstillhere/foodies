@@ -58,7 +58,7 @@ class _PartnerBodyState extends State<PartnerBody> {
             const FormHeader(
               title: "Orders",
               subTitle:
-                  "These are your floor mates’ orders. Tap for details and to select them.",
+                  "These are your floor mates' orders. Tap for details and to select them.",
             ),
             Padding(
               padding: EdgeInsets.symmetric(

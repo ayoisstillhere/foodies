@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
-
 import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
 import 'package:foodies/size_config.dart';
 
@@ -10,8 +10,10 @@ class DetailsScreen extends StatelessWidget {
   const DetailsScreen({
     Key? key,
     required this.order,
+    required this.btnAction,
   }) : super(key: key);
   final OrderEntity order;
+  final String btnAction;
 
   @override
   Widget build(BuildContext context) {

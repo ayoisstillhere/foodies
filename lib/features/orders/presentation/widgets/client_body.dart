@@ -70,7 +70,13 @@ class _ClientBodyState extends State<ClientBody> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (_)=> DetailsScreen(order: yourOrders[index])));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => DetailsScreen(
+                                        order: yourOrders[index],
+                                        btnAction: 'delete',
+                                      )));
                         },
                         child: FoodTile(
                           food: yourOrders[index].food,
@@ -91,4 +97,3 @@ class _ClientBodyState extends State<ClientBody> {
     );
   }
 }
-

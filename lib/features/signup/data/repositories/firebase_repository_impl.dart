@@ -82,4 +82,19 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
 
   @override
   Future<void> signOut() => firebaseRemoteDataSource.signOut();
+
+  @override
+  Future<void> deleteOrder(String orderId) async {
+    return await firebaseRemoteDataSource.deleteOrder(orderId);
+  }
+
+  @override
+  Future<void> selectOrder(String orderId, String partnerId) async {
+    return await firebaseRemoteDataSource.selectOrder(orderId, partnerId);
+  }
+
+  @override
+  Future<void> unselectOrder(String orderId) async {
+    return await firebaseRemoteDataSource.unselectOrder(orderId);
+  }
 }

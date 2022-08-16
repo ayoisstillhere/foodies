@@ -79,4 +79,7 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Stream<List<OrderEntity>> getOrders() {
     return firebaseRemoteDataSource.getOrders();
   }
+
+  @override
+  Future<void> signOut() => firebaseRemoteDataSource.signOut();
 }

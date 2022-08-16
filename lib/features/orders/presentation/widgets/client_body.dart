@@ -76,6 +76,7 @@ class _ClientBodyState extends State<ClientBody> {
                                   builder: (_) => DetailsScreen(
                                         order: yourOrders[index],
                                         btnAction: 'Delete',
+                                        uid: widget.uid,
                                       )));
                         },
                         child: FoodTile(

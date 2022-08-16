@@ -80,6 +80,7 @@ class _PartnerBodyState extends State<PartnerBody> {
                                   builder: (_) => DetailsScreen(
                                         order: availableOrders[index],
                                         btnAction: 'Select',
+                                        uid: widget.uid,
                                       )));
                         },
                         child: PartnerFoodTile(

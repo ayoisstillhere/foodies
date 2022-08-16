@@ -32,6 +32,6 @@ abstract class FirebaseRepository {
   Stream<List<OrderEntity>> getOrders();
   Future<void> signOut();
   Future<void> deleteOrder(String orderId);
-  Future<void> selectOrder(String partnerId);
-  Future<void> unselectOrder();
+  Future<void> selectOrder(String orderId, String partnerId);
+  Future<void> unselectOrder(String orderId);
 }

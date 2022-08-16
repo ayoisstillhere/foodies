@@ -6,7 +6,7 @@ class UnselectOrderUseCase {
     required this.repository,
   });
 
-  Future<void> call() async {
-    return await repository.unselectOrder();
+  Future<void> call(String orderId) async {
+    return await repository.unselectOrder(orderId);
   }
 }

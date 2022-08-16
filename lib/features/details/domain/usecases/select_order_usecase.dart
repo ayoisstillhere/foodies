@@ -6,7 +6,7 @@ class SelectOrderUseCase {
     required this.repository,
   });
 
-  Future<void> call(String partnerId) async {
-    return await repository.selectOrder(partnerId);
+  Future<void> call(String orderId, String partnerId) async {
+    return await repository.selectOrder(orderId, partnerId);
   }
 }

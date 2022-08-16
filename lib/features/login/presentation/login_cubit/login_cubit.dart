@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
+
 import '../../../signup/domain/usecases/create_current_user_usecase.dart';
 import '../../../signup/domain/usecases/login_usecase.dart';
 import '../../../signup/domain/usecases/signup_usecase.dart';
@@ -13,11 +15,13 @@ class LoginCubit extends Cubit<LoginState> {
   final SignupUseCase signupUseCase;
   final LoginUseCase loginUseCase;
   final CreateCurrentUserUsecase createCurrentUserUsecase;
+  final SignOutUseCase signOutUseCase;
 
   LoginCubit({
     required this.signupUseCase,
     required this.loginUseCase,
     required this.createCurrentUserUsecase,
+    required this.signOutUseCase,
   }) : super(LoginInitial());
 
   Future<void> submitLogin({
@@ -49,12 +53,19 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
     try {
       await signupUseCase.call(email, password);
-      await createCurrentUserUsecase.call(email, firstName, lastName, userClass, hall, floor, wing, roomNo);
+      await createCurrentUserUsecase.call(
+          email, firstName, lastName, userClass, hall, floor, wing, roomNo);
       emit(LoginSuccess());
     } on SocketException catch (e) {
       emit(LoginFailure(e.message));
     } catch (_) {
       emit(LoginFailure("Firebase Exception"));
     }
+  }
+
+  Future<void> submitSignOut() async {
+    try {
+      await signOutUseCase.call();
+    } on SocketException catch (e) {}
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
-import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
+import '../../../add_order/domain/entities/order_entity.dart';
+import '../../../add_order/presentation/bloc/cubit/order_cubit.dart';
 
 import '../../../../components/form_header.dart';
 import '../../../../components/home_header.dart';
@@ -48,7 +48,8 @@ class _PartnerBodyState extends State<PartnerBody> {
     final List<OrderEntity> selectedOrders = [];
     for (var i = 0; i < orders.orders.length; i++) {
       for (var j = 0; j < widget.sameFloorUsers.length; j++) {
-        if (orders.orders[i].uid == widget.sameFloorUsers[j] && orders.orders[i].status == "Selected") {
+        if (orders.orders[i].uid == widget.sameFloorUsers[j] &&
+            orders.orders[i].status == "Selected") {
           selectedOrders.add(orders.orders[i]);
           continue;
         }
@@ -68,41 +69,41 @@ class _PartnerBodyState extends State<PartnerBody> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(31)),
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: selectedOrders.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => DetailsScreen(
-                                        order: selectedOrders[index],
-                                        btnAction: 'Unselect',
-                                        uid: widget.user.uid,
-                                      )));
-                        },
-                        child: PartnerFoodTile(
-                          name: selectedOrders[index].name,
-                          roomNo: selectedOrders[index].room,
-                          food: selectedOrders[index].food,
-                          location: selectedOrders[index].location,
-                          ammount: selectedOrders[index].amount,
-                          index: index,
-                        ),
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(31)),
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: selectedOrders.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => DetailsScreen(
+                                      order: selectedOrders[index],
+                                      btnAction: 'Unselect',
+                                      uid: widget.user.uid,
+                                    )));
+                      },
+                      child: PartnerFoodTile(
+                        name: selectedOrders[index].name,
+                        roomNo: selectedOrders[index].room,
+                        food: selectedOrders[index].food,
+                        location: selectedOrders[index].location,
+                        ammount: selectedOrders[index].amount,
+                        index: index,
                       ),
-                      SizedBox(height: getProportionateScreenHeight(45)),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                    SizedBox(height: getProportionateScreenHeight(45)),
+                  ],
+                );
+              },
             ),
+          ),
         ],
       ),
     );

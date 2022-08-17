@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
-import 'package:foodies/features/profile/domain/usecases/switch_class_usecase.dart';
+import '../../../profile/domain/usecases/sign_out_usecase.dart';
+import '../../../profile/domain/usecases/switch_class_usecase.dart';
 
 import '../../../signup/domain/usecases/create_current_user_usecase.dart';
 import '../../../signup/domain/usecases/login_usecase.dart';
@@ -38,7 +38,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on SocketException catch (e) {
       emit(LoginFailure(e.message));
     } catch (_) {
-      emit(LoginFailure("Firebase Exception"));
+      emit(const LoginFailure("Firebase Exception"));
     }
   }
 
@@ -62,14 +62,14 @@ class LoginCubit extends Cubit<LoginState> {
     } on SocketException catch (e) {
       emit(LoginFailure(e.message));
     } catch (_) {
-      emit(LoginFailure("Firebase Exception"));
+      emit(const LoginFailure("Firebase Exception"));
     }
   }
 
   Future<void> submitSignOut() async {
     try {
       await signOutUseCase.call();
-    } on SocketException catch (e) {}
+    } on SocketException catch (_) {}
   }
 
   Future<void> switchClass({required String userClass, required String uid}) async {

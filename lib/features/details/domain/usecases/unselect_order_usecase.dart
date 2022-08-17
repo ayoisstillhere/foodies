@@ -1,4 +1,4 @@
-import 'package:foodies/features/signup/domain/repositories/firebase_repository.dart';
+import '../../../signup/domain/repositories/firebase_repository.dart';
 
 class UnselectOrderUseCase {
   final FirebaseRepository repository;

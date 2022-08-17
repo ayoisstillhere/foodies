@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:foodies/components/default_button.dart';
-import 'package:foodies/components/form_header.dart';
-import 'package:foodies/constants.dart';
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
-import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
-import 'package:foodies/size_config.dart';
+import '../../../../components/default_button.dart';
+import '../../../../components/form_header.dart';
+import '../../../../constants.dart';
+import '../../../add_order/domain/entities/order_entity.dart';
+import '../../../add_order/presentation/bloc/cubit/order_cubit.dart';
+import '../../../../size_config.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({

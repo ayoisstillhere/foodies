@@ -25,7 +25,7 @@ class OrderLoading extends OrderState {
 class OrderFailure extends OrderState {
   final String errorMessage;
 
-  OrderFailure(this.errorMessage);
+  const OrderFailure(this.errorMessage);
 
   @override
   List<Object?> get props => [this.errorMessage];

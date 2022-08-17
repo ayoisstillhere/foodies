@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../components/custom_suffix_icon.dart';
 import '../../../../components/default_button.dart';
 import '../../../../components/form_error.dart';
 import '../../../../components/form_header.dart';
-import '../bloc/cubit/order_cubit.dart';
-
-import '../../../../components/custom_suffix_icon.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../bloc/cubit/order_cubit.dart';
 
 class Body extends StatefulWidget {
   const Body({

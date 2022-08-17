@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-
-import 'package:foodies/constants.dart';
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
-import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
-import 'package:foodies/features/details/presentation/pages/details_screen.dart';
+import '../../../add_order/domain/entities/order_entity.dart';
+import '../../../add_order/presentation/bloc/cubit/order_cubit.dart';
+import '../../../details/presentation/pages/details_screen.dart';
 
 import '../../../../components/form_header.dart';
 import '../../../../size_config.dart';

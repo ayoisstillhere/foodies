@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
+import '../../../add_order/domain/entities/order_entity.dart';
 
-import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
-import 'package:foodies/features/orders/presentation/widgets/partner_food_tile.dart';
+import '../../../add_order/presentation/bloc/cubit/order_cubit.dart';
+import 'partner_food_tile.dart';
 
 import '../../../../components/form_header.dart';
 import '../../../../size_config.dart';
 import '../../../details/presentation/pages/details_screen.dart';
-import 'food_tile.dart';
 
 class PartnerBody extends StatefulWidget {
   const PartnerBody({

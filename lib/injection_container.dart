@@ -1,9 +1,9 @@
-import 'package:foodies/features/details/domain/usecases/delete_order_usecase.dart';
-import 'package:foodies/features/details/domain/usecases/select_order_usecase.dart';
-import 'package:foodies/features/details/domain/usecases/unselect_order_usecase.dart';
-import 'package:foodies/features/orders/domain/usecases/get_orders_usecase.dart';
-import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
-import 'package:foodies/features/profile/domain/usecases/switch_class_usecase.dart';
+import 'features/details/domain/usecases/delete_order_usecase.dart';
+import 'features/details/domain/usecases/select_order_usecase.dart';
+import 'features/details/domain/usecases/unselect_order_usecase.dart';
+import 'features/orders/domain/usecases/get_orders_usecase.dart';
+import 'features/profile/domain/usecases/sign_out_usecase.dart';
+import 'features/profile/domain/usecases/switch_class_usecase.dart';
 
 import 'features/add_order/domain/usecases/place_order_usecase.dart';
 import 'features/add_order/presentation/bloc/cubit/order_cubit.dart';

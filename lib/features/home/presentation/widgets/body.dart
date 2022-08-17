@@ -1,24 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../../components/form_header.dart';
 
-import '../../../signup/domain/entities/user_entity.dart';
-
-import '../../../../components/default_button.dart';
-import '../../../../components/home_header.dart';
-import '../../../../constants.dart';
-import '../../../../size_config.dart';
-import '../../../onboarding/presentation/pages/onboarding_screen.dart';
 import '../../../signup/data/models/user_model.dart';
+import '../../../signup/domain/entities/user_entity.dart';
 import '../bloc/user_bloc/user_cubit.dart';
 import 'client_body.dart';
 import 'partner_body.dart';
-import 'partner_tile.dart';
 
 class Body extends StatefulWidget {
-  Body({
+  const Body({
     Key? key,
     required this.uid,
   }) : super(key: key);

@@ -20,7 +20,7 @@ AppBarTheme appBarTheme() {
     color: Colors.white,
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle.light,
-    iconTheme: const IconThemeData(color: kTextGreyColor),
+    iconTheme: IconThemeData(color: kTextGreyColor),
     titleTextStyle: TextStyle(
       color: kTextGreyColor,
       fontSize: 18,
@@ -43,11 +43,11 @@ InputDecorationTheme inputDecorationTheme() {
     enabledBorder: outlineInputBorder,
     focusedBorder: outlineInputBorder,
     border: outlineInputBorder,
-    hintStyle: TextStyle(
+    hintStyle: const TextStyle(
       color: kTextGreyColor,
       fontSize: 20,
     ),
-    labelStyle: TextStyle(
+    labelStyle: const TextStyle(
       color: kTextGreyColor,
     ),
   );

@@ -11,7 +11,7 @@ class UserInitial extends UserState {
 
 class UserLoaded extends UserState {
   final List<UserEntity> users;
-  UserLoaded({
+  const UserLoaded({
     required this.users,
   });
   @override
@@ -20,6 +20,5 @@ class UserLoaded extends UserState {
 
 class UserLoading extends UserState {
   @override
-  // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }

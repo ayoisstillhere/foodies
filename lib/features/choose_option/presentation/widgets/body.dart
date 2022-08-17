@@ -78,12 +78,12 @@ class _BodyState extends State<Body> {
         if (state is LoginLoading) {
           return const Center(child: CircularProgressIndicator());
         }
-        return ChooseOptionForm();
+        return chooseOptionForm();
       },
     );
   }
 
-  Column ChooseOptionForm() {
+  Column chooseOptionForm() {
     return Column(
       children: [
         const Center(
@@ -112,7 +112,7 @@ class _BodyState extends State<Body> {
                   option: 'Partner',
                   img: 'assets/images/choose_option_partner.svg',
                   description: 'Help your floormates get food!',
-                  positions: [34, 46, 119, 34, 148, 15, 117],
+                  positions: const [34, 46, 119, 34, 148, 15, 117],
                   isSelected: partnerSelected,
                 ),
               ),
@@ -129,7 +129,7 @@ class _BodyState extends State<Body> {
                   img: 'assets/images/choose_option_client.svg',
                   option: 'Client',
                   description: 'Post orders for floormates to help!',
-                  positions: [50, 35, 119, 43, 148, 5, 135],
+                  positions: const [50, 35, 119, 43, 148, 5, 135],
                   isSelected: clientSelected,
                 ),
               ),

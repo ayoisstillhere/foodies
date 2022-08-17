@@ -1,4 +1,4 @@
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
+import '../../../add_order/domain/entities/order_entity.dart';
 
 import '../entities/user_entity.dart';
 

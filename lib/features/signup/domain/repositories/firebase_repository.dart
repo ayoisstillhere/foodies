@@ -34,4 +34,5 @@ abstract class FirebaseRepository {
   Future<void> deleteOrder(String orderId);
   Future<void> selectOrder(String orderId, String partnerId);
   Future<void> unselectOrder(String orderId);
+  Future<void> switchClass(String userClass);
 }

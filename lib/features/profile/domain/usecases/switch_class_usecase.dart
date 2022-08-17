@@ -5,7 +5,7 @@ class SwitchClassUseCase {
   SwitchClassUseCase({
     required this.repository,
   });
-  Future<void> call(String userClass) async {
-    return await repository.switchClass(userClass);
+  Future<void> call(String userClass, String uid) async {
+    return await repository.switchClass(userClass, uid);
   }
 }

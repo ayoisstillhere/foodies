@@ -37,6 +37,7 @@ abstract class FirebaseRemoteDataSource {
   Future<void> deleteOrder(String orderId);
   Future<void> selectOrder(String orderId, String partnerId);
   Future<void> unselectOrder(String orderId);
+  Future<void> switchClass(String userClass, String uid);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
@@ -163,5 +164,14 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     await _orderCollection.doc(orderId).update({
       'status': 'Unselected',
     });
+  }
+
+  @override
+  Future<void> switchClass(String userClass, String uid) async {
+    if (userClass == 'Partner') {
+      await _userCollection.doc(uid).update({'userClass': 'Client'});
+    }else {
+      await _userCollection.doc(uid).update({'userClass': 'Partner'});
+    }
   }
 }

@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:foodies/features/profile/domain/usecases/sign_out_usecase.dart';
+import 'package:foodies/features/profile/domain/usecases/switch_class_usecase.dart';
 
 import '../../../signup/domain/usecases/create_current_user_usecase.dart';
 import '../../../signup/domain/usecases/login_usecase.dart';
@@ -16,12 +17,14 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase loginUseCase;
   final CreateCurrentUserUsecase createCurrentUserUsecase;
   final SignOutUseCase signOutUseCase;
+  final SwitchClassUseCase switchClassUseCase;
 
   LoginCubit({
     required this.signupUseCase,
     required this.loginUseCase,
     required this.createCurrentUserUsecase,
     required this.signOutUseCase,
+    required this.switchClassUseCase,
   }) : super(LoginInitial());
 
   Future<void> submitLogin({
@@ -67,5 +70,11 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await signOutUseCase.call();
     } on SocketException catch (e) {}
+  }
+
+  Future<void> switchClass({required String userClass, required String uid}) async {
+    try {
+      await switchClassUseCase.call(userClass, uid);
+    } on SocketException catch (_) {}
   }
 }

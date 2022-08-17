@@ -13,6 +13,8 @@ import '../../../../size_config.dart';
 import '../../../onboarding/presentation/pages/onboarding_screen.dart';
 import '../../../signup/data/models/user_model.dart';
 import '../bloc/user_bloc/user_cubit.dart';
+import 'client_body.dart';
+import 'partner_body.dart';
 import 'partner_tile.dart';
 
 class Body extends StatefulWidget {
@@ -27,6 +29,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final List<String> sameFloorUsers = [];
   @override
   void initState() {
     BlocProvider.of<UserCubit>(context).getUsers();
@@ -59,6 +62,15 @@ class _BodyState extends State<Body> {
           wing: "",
           roomNo: ""),
     );
+    for (var i = 0; i < users.users.length; i++) {
+      if (users.users[i].hall == user.hall &&
+          users.users[i].wing == user.wing &&
+          users.users[i].floor == user.floor) {
+        sameFloorUsers.add(users.users[i].uid);
+      }
+    }
+
+    // Partners for Client Screen
     final List<UserEntity> partners = [];
     for (var i = 0; i < users.users.length; i++) {
       if (users.users[i].hall == user.hall &&
@@ -71,92 +83,8 @@ class _BodyState extends State<Body> {
     if (user.userClass == "Client") {
       return ClientBody(user: user, partners: partners);
     } else {
-      return PartnerBody(user: user);
+      return PartnerBody(user: user, sameFloorUsers: sameFloorUsers,);
     }
   }
 }
 
-class ClientBody extends StatelessWidget {
-  const ClientBody({
-    Key? key,
-    required this.user,
-    required this.partners,
-  }) : super(key: key);
-
-  final UserEntity user;
-  final List<UserEntity> partners;
-
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HomeHeader(firstName: user.firstName),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(31)),
-            child: Text(
-              "Available Partners:",
-              style: TextStyle(
-                color: kPrimaryColor,
-                fontSize: getProportionateScreenWidth(22),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: partners.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                children: [
-                  PartnerTile(
-                    firstName: partners[index].firstName,
-                    lastName: partners[index].lastName,
-                    roomNo: partners[index].roomNo,
-                  ),
-                  SizedBox(height: getProportionateScreenHeight(35)),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PartnerBody extends StatelessWidget {
-  const PartnerBody({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  final UserEntity user;
-
-  @override
-  Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HomeHeader(firstName: user.firstName),
-          SizedBox(height: getProportionateScreenHeight(40)),
-          const Center(
-            child: FormHeader(
-              title: "Selected Orders",
-              subTitle: "Tap Orders for Details",
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

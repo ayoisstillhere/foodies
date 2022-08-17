@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
 
+import 'package:foodies/features/add_order/domain/entities/order_entity.dart';
 import 'package:foodies/features/add_order/presentation/bloc/cubit/order_cubit.dart';
-import 'package:foodies/features/orders/presentation/widgets/partner_food_tile.dart';
 
 import '../../../../components/form_header.dart';
+import '../../../../components/home_header.dart';
 import '../../../../size_config.dart';
 import '../../../details/presentation/pages/details_screen.dart';
-import 'food_tile.dart';
+import '../../../orders/presentation/widgets/partner_food_tile.dart';
+import '../../../signup/domain/entities/user_entity.dart';
 
 class PartnerBody extends StatefulWidget {
   const PartnerBody({
     Key? key,
-    required this.uid,
+    required this.user,
     required this.sameFloorUsers,
   }) : super(key: key);
-  final String uid;
+
+  final UserEntity user;
   final List<String> sameFloorUsers;
 
   @override
@@ -43,32 +45,35 @@ class _PartnerBodyState extends State<PartnerBody> {
   }
 
   Widget ordersBody(OrderLoaded orders) {
-    final List<OrderEntity> availableOrders = [];
+    final List<OrderEntity> selectedOrders = [];
     for (var i = 0; i < orders.orders.length; i++) {
       for (var j = 0; j < widget.sameFloorUsers.length; j++) {
-        if (orders.orders[i].uid == widget.sameFloorUsers[j] && orders.orders[i].status == "Unselected") {
-          availableOrders.add(orders.orders[i]);
+        if (orders.orders[i].uid == widget.sameFloorUsers[j] && orders.orders[i].status == "Selected") {
+          selectedOrders.add(orders.orders[i]);
           continue;
         }
       }
     }
     return SingleChildScrollView(
-      child: Center(
-        child: Column(
-          children: [
-            const FormHeader(
-              title: "Orders",
-              subTitle:
-                  "These are your floor mates' orders. Tap for details and to select them.",
+      physics: const ClampingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeHeader(firstName: widget.user.firstName),
+          SizedBox(height: getProportionateScreenHeight(40)),
+          const Center(
+            child: FormHeader(
+              title: "Selected Orders",
+              subTitle: "Tap Orders for Details",
             ),
-            Padding(
+          ),
+          Padding(
               padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(31))
-                  .copyWith(top: getProportionateScreenHeight(40)),
+                      horizontal: getProportionateScreenWidth(31)),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: availableOrders.length,
+                itemCount: selectedOrders.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
@@ -78,17 +83,17 @@ class _PartnerBodyState extends State<PartnerBody> {
                               context,
                               MaterialPageRoute(
                                   builder: (_) => DetailsScreen(
-                                        order: availableOrders[index],
-                                        btnAction: 'Select',
-                                        uid: widget.uid,
+                                        order: selectedOrders[index],
+                                        btnAction: 'Unselect',
+                                        uid: widget.user.uid,
                                       )));
                         },
                         child: PartnerFoodTile(
-                          name: availableOrders[index].name,
-                          roomNo: availableOrders[index].room,
-                          food: availableOrders[index].food,
-                          location: availableOrders[index].location,
-                          ammount: availableOrders[index].amount,
+                          name: selectedOrders[index].name,
+                          roomNo: selectedOrders[index].room,
+                          food: selectedOrders[index].food,
+                          location: selectedOrders[index].location,
+                          ammount: selectedOrders[index].amount,
                           index: index,
                         ),
                       ),
@@ -98,8 +103,7 @@ class _PartnerBodyState extends State<PartnerBody> {
                 },
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }

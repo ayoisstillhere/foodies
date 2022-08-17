@@ -127,7 +127,7 @@ class _BodyState extends State<Body> {
                     location: _locationController.text.trim(),
                     amount: _amountController.text.trim(),
                     details: _detailsController.text.trim(),
-                    status: "",
+                    status: "Unselected",
                     partnerAssigned: "",
                   );
                 }

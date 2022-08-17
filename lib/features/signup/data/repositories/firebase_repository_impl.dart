@@ -97,4 +97,9 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Future<void> unselectOrder(String orderId) async {
     return await firebaseRemoteDataSource.unselectOrder(orderId);
   }
+
+  @override
+  Future<void> switchClass(String userClass, String uid) async {
+    return await firebaseRemoteDataSource.switchClass(userClass, uid);
+  }
 }

@@ -5,6 +5,7 @@ import 'package:foodies/components/default_button.dart';
 import 'package:foodies/components/form_header.dart';
 import 'package:foodies/constants.dart';
 import 'package:foodies/features/home/presentation/bloc/user_bloc/user_cubit.dart';
+import 'package:foodies/features/home/presentation/pages/home_screen.dart';
 import 'package:foodies/features/login/presentation/login_cubit/login_cubit.dart';
 import 'package:foodies/features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'package:foodies/features/profile/presentation/pages/profile_screen.dart';
@@ -118,7 +119,10 @@ class _BodyState extends State<Body> {
                 ? "Switch to Partner"
                 : "Switch to Client",
             press: () {
-              // TODO: implement switch class
+              BlocProvider.of<LoginCubit>(context)
+                  .switchClass(userClass: user.userClass, uid: user.uid);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => HomeScreen(uid: user.uid)));
             },
             color: Colors.white,
           ),

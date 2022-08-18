@@ -24,6 +24,7 @@ class PartnerFoodTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Container(
           height: getProportionateScreenHeight(100),

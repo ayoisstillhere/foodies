@@ -145,7 +145,8 @@ class _BodyState extends State<Body> {
                               hall: selectedHall,
                               floor: selectedFloor,
                               wing: selectedWing,
-                              roomNo: _roomNoController.text.trim(), password: widget.password,
+                              roomNo: _roomNoController.text.trim(),
+                              password: widget.password,
                             )));
               }
             },

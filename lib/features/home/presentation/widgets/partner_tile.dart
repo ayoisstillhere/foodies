@@ -23,6 +23,7 @@ class PartnerTile extends StatelessWidget {
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(31)),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               Container(
                 height: getProportionateScreenHeight(100),

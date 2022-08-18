@@ -35,7 +35,7 @@ All data is retrieved from Firebase Firestore. Login and Signup is using Firebas
 => Profile Screen (For Client and Partner)
 ## Screenshots
 
-![App Screenshot](1.png =390x844)
+![App Screenshot](1.png)
 ![App Screenshot](2.png)
 ![App Screenshot](3.png)
 ![App Screenshot](4.png)

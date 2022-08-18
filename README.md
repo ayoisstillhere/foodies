@@ -46,7 +46,6 @@ All data is retrieved from Firebase Firestore. Login and Signup is using Firebas
 ![App Screenshot](9.png)
 ![App Screenshot](10.png)
 ![App Screenshot](11.png)
-![App Screenshot](12.png)
 ![App Screenshot](13.png)
 ![App Screenshot](14.png)
 ![App Screenshot](15.png)
